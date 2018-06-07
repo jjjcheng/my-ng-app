@@ -1,0 +1,6 @@
+##ignore this file##
+/target/ 
+
+build
+node_modules
+package-lock.json     
