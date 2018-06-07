@@ -1,0 +1,100 @@
+@selectBgColor: #E2FF97 !important;
+@grid-header-height: 32px;
+@grid-footer-height: 28px;
+.grid {
+    /*width: 100%;
+    height: 100%;*/
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    .ui-grid-pinned-container-left {
+        .ui-grid-render-container-left {
+            .ui-grid-header-cell {
+                border-right: 0;
+            }
+            .ui-grid-top-panel{
+                background: linear-gradient(to bottom,#f9f9f9 0,#efefef 100%);
+
+            }
+            .ui-grid-viewport {
+                .ui-grid-canvas {
+                    .ui-grid-row-selected{
+                        div.ui-grid-row-header-cell{
+                            background-color: @selectBgColor;
+                        }
+                    }
+                    .ui-grid-row {
+                        .ui-grid-cell {
+                            border-right: 0;
+                        }
+                    }
+                    .ui-grid-row:nth-child(odd){
+                        .ui-grid-row-header-cell{
+                            background-color: #fff;
+                        }
+                    }
+                    .ui-grid-row:nth-child(even){
+                        .ui-grid-row-header-cell{
+                            background-color: #f9f9f9;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ui-grid-render-container-body {
+        .ui-grid-header {
+            .ui-grid-top-panel{
+                background: linear-gradient(to bottom,#f9f9f9 0,#efefef 100%);
+            }
+            .ui-grid-header-canvas {
+                width: 100%;
+                .ui-grid-header-cell {
+                    border-right: 0;
+                    .ui-grid-cell-contents{
+                        user-select: text;
+                        outline: none;
+                        cursor: auto;
+                    }
+                }
+            }
+        }
+        .ui-grid-viewport {
+            .ui-grid-canvas {
+                width: 100%;
+                .ui-grid-row {
+                    background-color: #fff;
+                    .ui-grid-cell {
+                        border-right: 0;
+                        background-color: #fff;
+                        border-bottom: 1px solid #dbdbdb;
+                        user-select: text;
+                        .ui-grid-cell-contents{
+                            padding: 8px 5px;
+                        }
+                    }
+                }
+                .ui-grid-row:nth-child(even) {
+                    background-color: #f9f9f9;
+                    .ui-grid-cell {
+                        background-color: #f9f9f9;
+                    }
+                }
+                .ui-grid-row:hover {
+                    // background-color: #FEFBE0;
+                    // .ui-grid-cell {
+                    //     background-color: #FEFBE0;
+                    // }
+                }
+                .ui-grid-row-selected {
+                    background-color: @selectBgColor;
+                    .ui-grid-cell {
+                        background-color: @selectBgColor;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+.login {
+    padding: 100px;
+    text-align: center;
+
+    .login-header {
+        width: 360px;
+        margin: 0 auto;
+        text-align: left;
+
+        .logo-text,
+        h1 {
+            display: inline-block;
+            vertical-align: bottom
+        }
+        .logo-text {
+            font-size: 28px;
+            color: #6f6e6b
+        }
+        h1 {
+            font-size: 0;
+            background: url(../images/login-logo.png) no-repeat
+        }
+    }
+
+    .login-body {
+        width: 360px;
+        margin: 0 auto;
+        margin-top: 30px;
+        .login-form .x-ipt,
+        .login-form button,
+        .login-form input[type=text] {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 14px;
+            border-radius: 3px;
+            line-height: normal;
+        }
+        .login-form .x-ipt,
+        .login-form input[type=text] {
+            border-color: #ccc;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset;
+            color: #acaba7;
+        }
+        .login-form {
+            .bootstrap-tagsinput.x-error,
+            .ng-submitted .x-ipt.ng-invalid,
+            .ng-submitted .x-ipt.ng-invalid:focus,
+            .x-ipt.ng-dirty.ng-invalid,
+            .x-ipt.ng-dirty.ng-invalid:focus,
+            .x-ipt.ng-dirty.ng-pending,
+            .x-ipt.ng-dirty.ng-pending:focus,
+            .x-ipt.ng-touched.ng-invalid,
+            .x-ipt.ng-touched.ng-invalid:focus,
+            .x-ipt.x-error {
+                border-color: #b94a48;
+                color: #b94a48
+            }
+            .field-group {
+                margin-top: 12px;
+                .x-error>em,
+                .x-error>span {
+                    text-align: left
+                }
+            }
+            .field-tools {
+                margin-top: 24px
+            }
+        }
+        .login-tips {
+            margin-top: 30px;
+            padding-top: 12px;
+            border-top: 1px solid #d5d6d9;
+            color: #6f6e6b;
+            a {
+                color: #6f6e6b;
+                &:hover {
+                    color: #d75b5d
+                }
+            }
+        }
+    }
+    .login-footer {
+        margin-top: 42px;
+        color: #484744
+    }
+}

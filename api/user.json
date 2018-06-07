@@ -1,0 +1,12 @@
+{
+	"code": 200,
+	"data": {
+		"id": 10021,
+	    "name": "张三",
+	    "activity": 12,
+	    "type": 2,
+	    "subType": 21,
+	    "treeType": 1,
+	    "treeTypeName": "测试数据"
+	}
+}

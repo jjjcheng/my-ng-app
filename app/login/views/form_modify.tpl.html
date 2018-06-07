@@ -1,0 +1,78 @@
+<div class="slide-dialog-header">
+    <h2>{{title}}</h2>
+    <div class="slide-dialog-toolbar">
+        <ul>
+            <li><span class="ui-btn slide-dialog-close" ng-click="close(false)"><i class="fa fa-remove"></i></span></li>
+        </ul>
+    </div>
+</div>
+<div class="slide-dialog-body x-slide-dialog-body">
+    <div class="x-data-panel-fixed">
+        <form name="form" novalidate="novalidate" ng-submit="submit(form.$valid);">
+            <div class="x-data-panel-body">
+                <div class="data-form">
+                    <dl>
+                        <dt><span class="x-star">*</span>真实姓名：</dt>
+                        <dd>
+                            <input type="text" name="realName" ng-model="data.realName" class="x-ipt" placeholder="请输入真实姓名" required style="width:60%;" />&nbsp;&nbsp;&nbsp;
+                            <label>
+                                <input type="checkbox" ng-model="modifyPwd" />修改密码
+                            </label>
+                            <div class="x-error" ng-if="interacted(form.realName)" ng-messages="form.realName.$error">
+                                <span ng-message="required">真实姓名不能为空</span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl ng-if="modifyPwd">
+                        <dt><span class="x-star">*</span>原始密码：</dt>
+                        <dd>
+                            <input type="password" name="password" ng-model="data.password" class="x-ipt" placeholder="请输入密码" minlength="8" maxlength="25" required />
+                            <div class="x-error" ng-if="interacted(form.password)" ng-messages="form.password.$error">
+                                <span ng-message="required">密码不能为空</span>
+                                <span ng-message="minlength">密码不能少于八位数</span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl ng-if="modifyPwd">
+                        <dt><span class="x-star">*</span>密码：</dt>
+                        <dd>
+                            <input type="password" name="newPwd" ng-model="data.newPwd" class="x-ipt" password="^[a-zA-Z0-9_]+$" placeholder="请输入密码" minlength="6" maxlength="32" required />
+                            <div class="x-error" ng-if="interacted(form.newPwd)" ng-messages="form.newPwd.$error">
+                                <span ng-message="required">密码不能为空</span>
+                                <span ng-message="minlength">密码不能少于六位数</span>
+                                <span ng-message="maxlength">密码不能多于三十二位数</span>
+                                <span ng-message="password">密码要求数字、大小写字母以及下划线的组合</span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl ng-if="modifyPwd">
+                        <dt><span class="x-star">*</span>确认密码：</dt>
+                        <dd>
+                            <input type="password" name="confirmPwd" ng-model="data.confirmPwd" class="x-ipt" password-matcher="data.newPwd" placeholder="请再次输入密码" required />
+                            <div class="x-error" ng-if="interacted(form.confirmPwd)" ng-messages="form.confirmPwd.$error">
+                                <span ng-message="required">确认密码不能为空</span>
+                                <span ng-message="passwordmatcher">两次输入的密码不一致</span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>联系电话：</dt>
+                        <dd>
+                            <input type=text ng-model="data.mobile" class="x-ipt" placeholder="请输入" />
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>email：</dt>
+                        <dd>
+                            <input type="text" ng-model="data.email" class="x-ipt" placeholder="请输入" />
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="x-data-panel-footer">
+                <button class="dialog-button cancel-button" type="button" ng-click="close(false)">取消</button>
+                <button class="dialog-button" type="submit" ng-disabled="formDisabled">提交</button>
+            </div>
+        </form>
+    </div>
+</div>

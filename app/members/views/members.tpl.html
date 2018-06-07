@@ -1,0 +1,36 @@
+<div class="x-wrap">
+    <div class="x-header">
+        <div class="x-title">
+            <i class="fa fa-2x fa-user"></i><span class="title-text">用户管理</span>
+        </div>
+        <div class="x-panel">
+        	<div class="x-toolbar">
+        		<div class="fl">
+        			<span class="x-btn-group">
+        				<button type="button" class="x-btn" ng-click="add()">
+        					<i class="fa fa-file-o"></i>
+        					<span class="btn-text">新建</span>
+        				</button>
+        				<button type="button" class="x-btn" ng-disabled="!hasSelected()" ng-click="edit()">
+        					<i class="fa fa-edit"></i>
+        					<span class="btn-text">编辑</span>
+        				</button>
+        				<button type="button" class="x-btn" ng-disabled="!hasSelectedRecords()" ng-click="removeRows()">
+        					<i class="fa fa-minus-circle"></i>
+        					<span class="btn-text">删除</span>
+        				</button>
+        			</span>
+
+                    <span class="x-btn-group">
+                        <button class="x-btn" ng-disabled="!hasSelected()" ng-click="reset()">
+                            <i class="fa fa fa-rotate-left"></i>
+                            <span class="btn-text">密码重置</span>
+                        </button>
+                    </span>
+        		</div>
+        		<div class="fr"></div>
+        	</div>
+            <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-pagination></div>
+        </div>
+    </div>
+</div>

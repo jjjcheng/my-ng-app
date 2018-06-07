@@ -1,0 +1,125 @@
+@x-toolbar-height: 36px;
+.x-toolbar {
+	height:@x-toolbar-height;
+	.clearfix();
+
+	.x-btn {
+		margin-top: unit((unit(@x-toolbar-height) - 30)/2, px);
+	}
+
+	.x-btn-group {
+		margin:0 5px;
+
+		&:first-child {
+			margin-left:0;
+		}
+		&:last-child {
+			margin-right:0;
+		}
+	}
+
+	.text-label, .text-button {
+		margin:0 5px;
+		font-size:14px;
+		line-height:@x-toolbar-height;
+	}
+}
+.x-toolbar + .x-grid-fixed,
+.x-toolbar + .x-dlg-panels {
+	top:unit(unit(@x-toolbar-height) + unit(@x-margin), px);
+}
+.x-toolbar + .x-panel-fixed {
+	position:absolute;
+	top:unit(unit(@x-toolbar-height) + unit(@x-padding) * 2, px);
+	left:20px;
+	right:20px;
+	bottom:20px;
+	overflow:auto;
+
+	.x-table {
+		margin-top:0;
+	}
+}
+@ui-toolbar-height:42px;
+.ui-toolbar {
+	height:@ui-toolbar-height;
+	margin-top:@x-margin;
+	background-color:#48474C;
+
+	.x-btn {
+		border:none;
+		border-radius:0;
+		padding-top:0;
+		padding-bottom:0;
+		line-height:@ui-toolbar-height;
+		color:#FFFFFF;
+		background:none;
+
+		&:hover, &.hover {
+			color:#FFFFFF;
+			background:#D75B5D;
+		}
+	}
+}
+.ui-filter {
+	height:@ui-toolbar-height;
+	font-size:0;
+	
+	.x-btn {
+		min-width:140px;
+		text-align:center;
+		i, .fa {
+			display:none;
+		}
+		&.hover i, &.hover .fa {
+			display:inline-block;
+		}
+	}
+}
+.ui-query {
+	line-height:@ui-toolbar-height;
+	.x-ipt, input[type="text"], select, .x-btn-query {
+		height:36px;
+		margin-top:unit((unit(@ui-toolbar-height) - 36)/2, px);
+		border:none;
+		vertical-align:top;
+	}
+	.x-ipt, input[type="text"] {
+		margin-left:5px;
+		background-color:#FFFFFF;
+	}
+	select, .x-btn-query {
+		color:#FFFFFF;
+	}
+	option {
+		color:#333333;
+	}
+	select {
+		line-height:normal;
+		background-color:transparent;
+		background-image:url(../images/ico-white-trigger.gif);
+	}
+	.x-btn-query {
+		width:36px;
+		text-align:center;
+		background:none;
+	}
+}
+.data-tools {
+	margin-top:20px;
+	text-align:right;
+
+	button, .dialog-button {
+		margin-left:12px;
+
+		&:first-child {
+			margin-left:0;
+		}
+	}
+}
+
+.ta-toolbar {
+	.btn-group {
+		margin-bottom:8px;
+	}
+}

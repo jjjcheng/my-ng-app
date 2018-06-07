@@ -1,0 +1,57 @@
+<div class="slide-dialog-header">
+	<h2>{{title}}</h2>
+	<div class="slide-dialog-toolbar">
+		<ul>
+			<li><span class="ui-btn slide-dialog-close" ng-click="close(false)"><i class="fa fa-remove"></i></span></li>
+		</ul>
+	</div>
+</div>
+<div class="slide-dialog-body">
+	<div class="data-panel">
+		<form name="form" novalidate="novalidate" ng-submit="submit(form.$valid);">
+			<div class="data-panel-body">
+				<div class="data-form">
+					<dl>
+						<dt><label class="radio-group"><input type="radio" name="type" ng-model="data.type" class="x-radio" value="1" ng-checked="true">系统默认</label>&nbsp;&nbsp;<label class="radio-group"><input type="radio" name="type" ng-model="data.type" class="x-radio" value="2">自定义</label></dt>
+						<dd ng-if="data.type==2">
+							<table cellspacing="0" cellpadding="0">
+								<colgroup>
+									<col width="110" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<td class="x-control"><span class="x-star">*</span>自定义密码：</td>
+										<td>
+											<input type="text" name="password" ng-model="data.password" password="^[a-zA-Z0-9_]+$" placeholder="请输入密码" minlength="6" maxlength="32" class="x-ipt" required />
+											<div class="x-error" ng-if="interacted(form.password)" ng-messages="form.password.$error">
+				                                <span ng-message="required">密码不能为空</span>
+				                                <span ng-message="minlength">密码不能少于六位数</span>
+				                                <span ng-message="maxlength">密码不能多于三十二位数</span>
+				                                <span ng-message="password">密码要求数字、大小写字母以及下划线的组合</span>
+				                            </div>
+										</td>
+									</tr>
+									<tr>
+										<td class="x-control"><span class="x-star">*</span>确认密码：</td>
+										<td>
+											<input type="password" name="confirmPwd" ng-model="data.confirmPwd" class="x-ipt" password-matcher="data.password" placeholder="请再次输入密码" required />
+											<div class="x-error" ng-if="interacted(form.confirmPwd)" ng-messages="form.confirmPwd.$error">
+				                                <span ng-message="required">确认密码不能为空</span>
+				                                <span ng-message="passwordmatcher">两次输入的密码不一致</span>
+				                            </div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="data-panel-footer">
+				<div class="data-tools">
+					<button class="dialog-button cancel-button" type="button" ng-click="close(false)">取消</button><button class="dialog-button" type="submit" ng-disabled="formDisabled">提交</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

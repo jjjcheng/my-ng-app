@@ -1,0 +1,170 @@
+{
+    "code": 200,
+    "data":
+    {
+        "totalItems": 52,
+        "columns": [
+        {
+            "name": "序号",
+            "width": 50,
+            "field": "id"
+        },
+        {
+            "name": "企业名称",
+            "align": "left",
+            "field": "title"
+        },
+        {
+            "name": "统一社会信用代码",
+            "width": 150,
+            "field": "creditCode"
+        },
+        {
+            "name": "组织机构代码",
+            "width": 150,
+            "field": "orgCode"
+        },
+        {
+            "name": "企业注册号",
+            "width": 100,
+            "field": "number"
+        },
+        {
+            "name": "录入时间",
+            "width": 200,
+            "field": "date"
+        },
+        {
+            "name": "操作",
+            "width": 100,
+            "field": "id",
+            "cellTemplate": "<div class=\"x-grid-inner\"><span class=\"btn-text\" ng-click=\"grid.appScope.preview(grid.getCellValue(row, col))\">详情</span></div>"
+        }],
+        "fields":
+        {
+            "types":
+            {
+                "1": "企业库",
+                "2": "法人库"
+            },
+            "status":
+            {
+                "0": "处理中",
+                "1": "处理完成"
+            },
+            "state":
+            {
+                "0": "<span class=\"text-danger\">失败</span>",
+                "1": "<span class=\"text-success\">成功</span>"
+            }
+        },
+        "process": [
+        {
+            "id": 1,
+            "date": 1288323623006,
+            "author": "殷哲军",
+            "state": 2,
+            "member": "平台管理员",
+            "content": "这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据"
+        },
+        {
+            "id": 3,
+            "date": 1288323623006,
+            "author": "殷哲军",
+            "state": 3,
+            "member": "平台管理员",
+            "content": "这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据"
+        },
+        {
+            "id": 3,
+            "date": 1288323623006,
+            "author": "殷哲军",
+            "state": 1,
+            "member": "平台管理员",
+            "content": "这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据这是传说中的测试数据"
+        }],
+        "data": [
+        {
+            "id": 1,
+            "title": "黔南“交通一卡通”成功上线 全国百余城市通用",
+            "name": "测试数据",
+            "date": "2016-12-16 18:20:10",
+            "type": 2,
+            "author": "admin",
+            "state": 1,
+            "status": 1,
+            "path": "site01",
+            "json":
+            {
+                "dbtype": "mysql",
+                "dburl": "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8",
+                "username": "root",
+                "password": "root",
+                "tableName": "document",
+                "fields": "id,title,typeId,content,source,author,writeTime"
+            }
+        },
+        {
+            "id": 2,
+            "title": "这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试",
+            "name": "测试数据",
+            "date": "2016-12-16 18:20:10",
+            "type": 2,
+            "author": "admin",
+            "path": "site012",
+            "state": 1,
+            "status": 0
+        },
+        {
+            "id": 3,
+            "title": "黔南“交通一卡通”成功上线 全国百余城市通用",
+            "name": "测试数据",
+            "date": "2016-12-16 18:20:10",
+            "type": 2,
+            "author": "admin",
+            "state": 1,
+            "status": 1,
+            "path": "site01",
+            "json":
+            {
+                "dbtype": "mysql",
+                "dburl": "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8",
+                "username": "root",
+                "password": "root",
+                "tableName": "document",
+                "fields": "id,title,typeId,content,source,author,writeTime"
+            }
+        },
+        {
+            "id": 4,
+            "title": "这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试这是传说中的测试",
+            "name": "测试数据",
+            "date": "2016-12-16 18:20:10",
+            "type": 2,
+            "author": "admin",
+            "path": "site012",
+            "state": 1,
+            "status": 0
+        },
+        {
+            "id": 5,
+            "title": "黔南“交通一卡通”成功上线 全国百余城市通用",
+            "name": "测试数据",
+            "date": "2016-12-16 18:20:10",
+            "type": 2,
+            "author": "admin",
+            "state": 1,
+            "status": 1,
+            "path": "site01",
+            "json":
+            {
+                "dbtype": "mysql",
+                "dburl": "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8",
+                "username": "root",
+                "password": "root",
+                "tableName": "document",
+                "fields": "id,title,typeId,content,source,author,writeTime"
+            }
+        }]
+    }
+}
