@@ -4,4 +4,7 @@
 build
 node_modules
 package-lock.json
-*.rar     
+*.rar
+styles/css/modules/*.css
+styles/css/core/*.css
+styles/css/mixins/*.css
