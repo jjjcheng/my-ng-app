@@ -5,7 +5,15 @@ angular.module('app.layout').directive('navigation', ['$rootScope', '$state', 'u
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: 'app/layout/views/navigation.tpl.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			console.log("123")
+			var settings = {
+					backdrop: true,
+					windowClass: 'slide-panel'
+				}
+			$scope.expand=function(name){
+				var d=dialog.showDialogByUrl('app/layout/views/navigation-' + name + '.tpl.html',function(){
+					
+				},settings)
+			}
 		}
 	};
 }]);
