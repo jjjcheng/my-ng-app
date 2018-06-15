@@ -5,7 +5,8 @@ angular.module('app.notice', [])
             .state('index.notice', {
                 url: '/notice',
                 data: {
-                    title: "通知公告"
+                    title: "通知公告",
+                    name:"notice"
                 },
                 views:{
                     'content@index':{

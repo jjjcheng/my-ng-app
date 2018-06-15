@@ -26,6 +26,8 @@ angular.module('app', [
         $httpProvider.interceptors.push('ErrorHttpInterceptor');
     })
     .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User','ui.api', function($rootScope, $state, dialog, http, User,api) {
+        $rootScope.global = {};
+        
         $rootScope.logout = function() {
             dialog.confirm("确定要退出吗？").result.then(function(r) {
                 if (r) {

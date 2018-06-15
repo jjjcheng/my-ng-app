@@ -5,7 +5,8 @@ angular.module('app.members', [])
             .state('index.members', {
                 url: '/members',
                 data: {
-                    title: "会员管理"
+                    title: "会员管理",
+                    name:"members"
                 },
                 views: {
                     'content@index': {

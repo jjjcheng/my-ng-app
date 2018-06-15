@@ -1,18 +1,18 @@
-<div class="aside-nav">
+<div class="aside-tab">
     <ul>
-        <li>
+        <li ng-class="{'hover':$state.current.data.name == 'members'}">
             <a class="span_nav" ui-sref="index.members" ui-sref-active="activeA">                   
                 <i class="fa fa-paper-plane"></i>
                 <span class="icon_text">会员管理</span>
             </a>
         </li>
-        <li>
+        <li ng-class="{'hover':$state.current.data.name == 'notice'}">
             <a class="span_nav" ui-sref="index.notice" ui-sref-active="activeA">                    
                 <i class="fa fa-paper-plane"></i>
                 <span class="icon_text">通知公告</span>
             </a>
         </li>
-        <li ng-click="expand('portal')" class="ico-nav">
+        <li ng-class="{'hover': $root.global.menu == 'portal' || $state.current.data.name == 'portal'}" ng-click="expand('portal')" class="ico-nav">
             <i class="fa fa-2x fa-tasks"></i><span class="ico-text">平台服务</span></span>
         </li>
     </ul>

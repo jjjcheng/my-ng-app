@@ -389,21 +389,20 @@
     }
 }
 
-@slide-panel-width: 320px;
+@slide-panel-width: 270px;
 @slide-panel-header-height: 75px;
 .slide-panel {
     position: fixed;
-    top: unit(unit(@header-top-height) + unit(@header-toolbar-height), px);
+    top: 0;
     left: @aside-width;
     right: 0;
     bottom: 0;
     &.in {
-
         .slide-dialog-wrap {
             position: absolute;
             z-index: 9;
             top: 0;
-            left: -320px;
+            left: -@slide-panel-width; //最终位置
             bottom: 0;
             width: @slide-panel-width;
             background-color: #FFFFFF;
@@ -413,64 +412,81 @@
             -ms-transform: translateX(@slide-panel-width);
             -o-transform: translateX(@slide-panel-width);
             transform: translateX(@slide-panel-width);
-            -webkit-transition-duration: .15s;
-            transition-duration: .15s;
+            -webkit-transition-duration: .25s; //进入
+            transition-duration: .25s;
         }
-        .x-dialog-loading {
-            display: none;
-        }
+    }
+    .slide-dialog-wrap {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: -@slide-panel-width;
+        bottom: 0;
+        width: @slide-panel-width;
+        background-color: #FFFFFF;
+        box-shadow: 1px 0 5px rgba(0, 0, 0, .14);
 
-        .slide-panel-header {
-            position: relative;
-            height: @slide-panel-header-height;
-            padding: @x-padding @x-padding 0;
-            .slide-panel-title {
-                h2 {
-                    font-size: 18px;
-                }
-            }
-            .slide-panel-form {
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0; // margin:0 -@x-padding;
-                border-bottom: 1px solid #E0E0E1;
+        -webkit-transform: translateX(-@slide-panel-width);
+        -ms-transform: translateX(-@slide-panel-width);
+        -o-transform: translateX(-@slide-panel-width);
+        transform: translateX(-@slide-panel-width);
+        -webkit-transition-duration: .5s;
+        transition-duration: .5s;
+    }
+    .x-dialog-loading {
+        display: none;
+    }
 
-                input[type="text"],
-                .x-ipt {
-                    width: 100%;
-                    padding: 8px 0;
-                    padding-right: @x-padding;
-                    padding-left: 42px;
-                    font-size: 12px;
-                    border: none;
-                    outline: none;
-                }
-
-                .fa-search {
-                    position: absolute;
-                    top: 50%;
-                    left: @x-padding;
-                    margin-top: -6px;
-                }
+    .slide-panel-header {
+        position: relative;
+        height: @slide-panel-header-height;
+        padding: @x-padding @x-padding 0;
+        .slide-panel-title {
+            h2 {
+                font-size: 18px;
             }
         }
-        .slide-panel-body {
+        .slide-panel-form {
             position: absolute;
-            top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            padding: @x-padding;
-            overflow: auto;
-        }
-        .slide-panel-header+.slide-panel-body {
-            top: @slide-panel-header-height;
-        }
+            bottom: 0; // margin:0 -@x-padding;
+            border-bottom: 1px solid #E0E0E1;
 
-        &+.x-dialog-mask {
-            left: @aside-width;
+            input[type="text"],
+            .x-ipt {
+                width: 100%;
+                padding: 8px 0;
+                padding-right: @x-padding;
+                padding-left: 42px;
+                font-size: 12px;
+                border: none;
+                outline: none;
+            }
+
+            .fa-search {
+                position: absolute;
+                top: 50%;
+                left: @x-padding;
+                margin-top: -6px;
+            }
         }
+    }
+    .slide-panel-body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: @x-padding;
+        overflow: auto;
+    }
+    .slide-panel-header+.slide-panel-body {
+        top: @slide-panel-header-height;
+    }
+
+    &+.x-dialog-mask {
+        left: @aside-width;
     }
 }
 
