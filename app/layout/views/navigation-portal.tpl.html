@@ -1,4 +1,30 @@
-<div>
-	asdasd
-	
+<div class="x-slide-panel-header">
+	<div class="slide-panel-title">
+		<h2>平台服务</h2>
+	</div>
+</div>
+<div class="x-slide-panel-body">
+	<div class="x-nav">
+		<div class="x-nav-item">
+			<h3><i class="fa fa-tag"></i><span class="x-nav-text">融资项目管理</span></h3>
+			<div class="x-nav-item-panel">
+				<ul>
+					<li ng-class="{'active': $state.includes('project.stock.*')}"><a data-ui-sref="project.stock.todo"><i class="fa fa-bookmark"></i><span class="x-nav-text">股权融资项目</span></a></li>
+					<li ng-class="{'active': $state.includes('project.creditor.*')}"><a data-ui-sref="project.creditor.todo"><i class="fa fa-legal"></i><span class="x-nav-text">债权融资项目</span></a></li>
+					<li ng-class="{'active': $state.includes('project.issue.*')}"><a data-ui-sref="project.issue.todo"><i class="fa fa-cart-arrow-down"></i><span class="x-nav-text">发债融资项目</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="x-nav-item">
+			<h3><i class="fa fa-tag"></i><span class="x-nav-text">企业基本信息管理</span></h3>
+			<div class="x-nav-item-panel">
+				<ul>
+					<li ng-class="{'active': $state.includes('info.*', {type: 1})}"><a data-ui-sref="info.todo({type: 1})"><i class="fa fa-bookmark"></i><span class="x-nav-text">文创企业</span></a></li>
+					<li ng-class="{'active': $state.includes('info.*', {type: 2})}"><a data-ui-sref="info.todo({type: 2})"><i class="fa fa-legal"></i><span class="x-nav-text">投资机构</span></a></li>
+					<li ng-class="{'active': $state.includes('info.*', {type: 3})}"><a data-ui-sref="info.todo({type: 3})"><i class="fa fa-cart-arrow-down"></i><span class="x-nav-text">运营商</span></a></li>
+					<li ng-class="{'active': $state.includes('info.*', {type: 4})}"><a data-ui-sref="info.todo({type: 4})"><i class="fa fa-crosshairs"></i><span class="x-nav-text">服务机构</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
