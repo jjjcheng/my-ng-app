@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('app.members', [])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider

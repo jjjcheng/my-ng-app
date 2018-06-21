@@ -11,6 +11,7 @@ angular.module('app', [
         'app.layout',
         'app.members',
         'app.notice',
+        'app.project',
 
         'app.plugins'
     ])
