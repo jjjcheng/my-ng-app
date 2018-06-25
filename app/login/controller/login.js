@@ -14,7 +14,7 @@ angular.module('app.login')
                     name: 'api/grid.json',
                     params: user
                 }).success(function(data) {
-                    $state.go('index.members');
+                    $state.go('members');
                 }).error(function() {
                     $scope.submitted = $scope.formDisabled = false;
                 }).finally(function() {
