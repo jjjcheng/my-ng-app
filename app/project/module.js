@@ -9,7 +9,7 @@ angular.module('app.project', [])
 			.state('project.stock',{
 				url:'/project/stock',
 				data:{
-					name:"project.stock"
+					name:"portal"
 				},
 				views:{
 					'content':{

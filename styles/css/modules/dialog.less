@@ -503,7 +503,7 @@
                             }
 
                             &:hover {
-                                
+
                                 &:before {
                                     background-color: #fff5f5;
                                     position: absolute;
@@ -514,6 +514,34 @@
                                     content: '';
                                     display: block;
                                     height: 100%;
+                                }
+                            }
+
+                            &.active {
+                                .x-nav-text{
+                                    color:#d45454;
+                                }
+                                &:before {
+                                    background-color: #fff5f5;
+                                    position: absolute;
+                                    top: 0;
+                                    left: -20px;
+                                    right: -20px;
+                                    z-index: -1;
+                                    content: '';
+                                    display: block;
+                                    height: 100%;
+                                }
+                                &:after {
+                                    position: absolute;
+                                    top: 0;
+                                    left: -20px;
+                                    z-index: 1;
+                                    content: '';
+                                    display: block;
+                                    height: 100%;
+                                    width: 2px;
+                                    background-color: #d75b5d;
                                 }
                             }
                         }

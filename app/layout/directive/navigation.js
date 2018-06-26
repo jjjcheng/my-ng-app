@@ -27,7 +27,7 @@ angular.module('app.layout').directive('navigation', ['$rootScope', '$state', 'u
 				if (name == _menu.name && _menu[name].opened) return;
 
 				var d = dialog.showDialogByUrl('app/layout/views/navigation-' + name + '.tpl.html', function(scope) {
-
+					scope.$state=$state;
 				}, settings);
 				// 每次打开窗口时，激活状态转移到当前触发按钮
 				_global.menu = name;
