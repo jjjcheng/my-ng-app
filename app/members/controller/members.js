@@ -42,18 +42,15 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
         }, {
             "name": "企业名称",
             "align": "left",
-            "field": "title"
-        }, {
-            "name": "统一社会信用代码",
-            "width": 150,
-            "field": "creditCode"
+            "field": "title",
+            "width":500
         }, {
             "name": "录入时间",
             "width": 200,
             "field": "date"
         }, {
             "name": "操作",
-            "width": 100,
+            // "width": 100,
             "field": "id",
             "cellTemplate": "<div class=\"x-grid-inner\"><span class=\"btn-text\" ng-click=\"grid.appScope.preview(grid.getCellValue(row, col))\">详情</span></div>"
         }],
