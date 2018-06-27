@@ -8,6 +8,7 @@
 			"angular-ui-grid",
 			"angular-angular-messages",
 			"angular-animate",
+			"angular-ui-tree",
 			"lodash",
 			"ng-file-upload-shim",
 			"ng-file-upload"
@@ -21,6 +22,7 @@
 		"angular-ui-grid":"node_modules/angular-ui-grid/ui-grid.min.js",
 		"angular-angular-messages":"node_modules/angular-messages/angular-messages.min.js",
 		"angular-animate":"node_modules/angular-animate/angular-animate.min.js",
+		"angular-ui-tree":"node_modules/angular-ui-tree/dist/angular-ui-tree.min.js",
 		"lodash": "node_modules/lodash/lodash.min.js",
 		"ng-file-upload-shim":"node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js",
 		"ng-file-upload": "node_modules/ng-file-upload/dist/ng-file-upload.min.js"

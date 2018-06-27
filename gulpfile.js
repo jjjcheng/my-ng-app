@@ -26,7 +26,8 @@ var source = {
             "styles/css/font-awesome.css",
             "styles/css/laydate.css",
             "node_modules/angular-ui-grid/ui-grid.css",
-            "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "node_modules/angular-ui-tree/dist/angular-ui-tree.min.css"
         ],
         src: [
             "styles/css/global.less",
