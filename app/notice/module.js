@@ -10,7 +10,8 @@ angular.module('app.notice', [])
                 },
                 views:{
                     'content':{
-                        templateUrl: '/app/notice/views/notice.tpl.html'
+                        templateUrl: '/app/notice/views/notice.tpl.html',
+                        controller:'noticeController'
                     }
                 },
                 parent: 'index'

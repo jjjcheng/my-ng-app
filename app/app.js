@@ -7,6 +7,8 @@ angular.module('app', [
         'ui.bootstrap',
         'ui.grid.selection',
         'ui.grid.pagination',
+        'ui.tree',
+        
         'app.login',
         'app.layout',
         'app.members',
@@ -26,9 +28,9 @@ angular.module('app', [
         })
         $httpProvider.interceptors.push('ErrorHttpInterceptor');
     })
-    .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User','ui.api', function($rootScope, $state, dialog, http, User,api) {
+    .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User', 'ui.api', function($rootScope, $state, dialog, http, User, api) {
         $rootScope.global = {};
-        
+
         $rootScope.logout = function() {
             dialog.confirm("确定要退出吗？").result.then(function(r) {
                 if (r) {
@@ -42,14 +44,14 @@ angular.module('app', [
             })
         }
         $rootScope.modify = function() {
-            var user=User.get();
+            var user = User.get();
             if (!user) {
                 dialog.alert('发生异常!');
                 return;
             }
             api.form({
-                title:'修改信息',
-                templateUrl:'/app/login/views/form_modify.tpl.html'
+                title: '修改信息',
+                templateUrl: '/app/login/views/form_modify.tpl.html'
             })
 
         }

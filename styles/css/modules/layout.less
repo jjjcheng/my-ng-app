@@ -28,8 +28,8 @@
                 }
                 li.hover {
                     color: #fff;
-                    .span_nav{
-                        color:#fff;
+                    .span_nav {
+                        color: #fff;
                     }
                 }
                 li {
@@ -209,6 +209,36 @@
                 width: 150px;
                 height: 3px;
                 background-color: #d75b5d;
+            }
+        }
+    }
+    .x-layout {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .x-side-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 1;
+            width: 240px;
+            background-color: #fff;
+            box-shadow: 1px 0 3px rgba(0, 0, 0, .14)
+        }
+
+        .x-main-panel {
+            position: absolute;
+            top: 0;
+            left: 240px;
+            right: 0;
+            bottom: 0;
+
+            .x-loading {
+                background-color: rgba(255, 255, 255, .1)
             }
         }
     }
