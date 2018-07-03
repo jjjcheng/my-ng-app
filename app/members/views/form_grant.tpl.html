@@ -1,24 +1,52 @@
 <div class="slide-dialog-header">
-	<h2>{{title}}</h2>
-	<div class="slide-dialog-toolbar">
-		<ul>
-			<li><span class="ui-btn slide-dialog-close" ng-click="close(false)"><i class="fa fa-remove"></i></span></li>
-		</ul>
-	</div>
+    <h2>{{title}}</h2>
+    <div class="slide-dialog-toolbar">
+        <ul>
+            <li><span class="ui-btn slide-dialog-close" ng-click="close(false)"><i class="fa fa-remove"></i></span></li>
+        </ul>
+    </div>
 </div>
 <div class="slide-dialog-body">
-	<div class="data-panel">
-		<form name="form" novalidate="novalidate" ng-submit="submit(form.$valid);">
-			<div class="data-panel-body">
-				<div class="data-form">
-					<button class="x-btn" ng-click="test()">test</button>
-				</div>
-			</div>
-			<div class="data-panel-footer">
-				<div class="data-tools">
-					<button class="dialog-button cancel-button" type="button" ng-click="close(false)">取消</button><button class="dialog-button" type="submit" ng-disabled="formDisabled">提交</button>
-				</div>
-			</div>
-		</form>
-	</div>
+    <div class="data-panel">
+        <form name="form" novalidate="novalidate" ng-submit="submit(form.$valid);">
+            <div class="data-panel-body">
+                <!-- 备选tree -->
+                <div class="row">
+                    <div class="col-sm-6">
+                    	<span>tree1</span>
+						<button ng-click="select()">xx</button>
+                        <div ui-tree id="tree-root">
+                            <ol ui-tree-nodes ng-model="nodes">
+                                <li ng-repeat="node in nodes" ui-tree-node ng-include="'nodes_grant.html'"></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- 目标tree -->
+                    <div class="col-sm-6">
+                    	<span>tree2</span>
+                        <div ui-tree id="tree-root">
+                            <ol ui-tree-nodes ng-model="data">
+                                <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_grant.html'"></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="data-panel-footer">
+                <div class="data-tools">
+                    <button class="dialog-button cancel-button" type="button" ng-click="close(false)">取消</button>
+                    <button class="dialog-button" type="submit" ng-disabled="formDisabled">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+<script type="text/ng-template" id="nodes_grant.html">
+    <div ui-tree-handle class="tree-node tree-node-content">
+        {{node.title}}
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_grant.html'">
+        </li>
+    </ol>
+</script>

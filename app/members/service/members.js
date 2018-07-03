@@ -28,9 +28,15 @@ angular.module('app.members').factory('membersService', ['$q', function($q) {
 
         }
     }
+
+    function select(data){
+        var me=this;
+        console.log(this);
+    }
     var service = {
         getBasicData: getBasicData,
-        checkbox: checkbox
+        checkbox: checkbox,
+        select:select
     };
     return service;
 }])

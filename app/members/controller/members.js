@@ -147,11 +147,13 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
                 }
             },
             scope: {
-                test: function() {
-                    console.log($scope)
-                }
+                select:service.select
             },
             resolveApplyScope: ['nodes'],
+            resolveAfter:function(data){
+                var _scope=this;
+                _scope.data=[];
+            },
             config: {
                 windowClass: 'x-window',
                 width: 720
