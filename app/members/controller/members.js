@@ -43,7 +43,7 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
             "name": "企业名称",
             "align": "left",
             "field": "title",
-            "width":500
+            "width": 500
         }, {
             "name": "录入时间",
             "width": 200,
@@ -128,6 +128,33 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
             config: {
                 windowClass: 'x-window',
                 width: 480
+            }
+        })
+    }
+
+    $scope.grant = function() {
+        api.form({
+            title: "角色授权",
+            templateUrl: "app/members/views/form_grant.tpl.html",
+            // resolveWait: http.post({
+            //     name: "api/nodes.json"
+            // }),
+            resolveWait: {
+                nodes: function() {
+                    return http.post({
+                        name: "api/nodes.json"
+                    })
+                }
+            },
+            scope: {
+                test: function() {
+                    console.log($scope)
+                }
+            },
+            resolveApplyScope: ['nodes'],
+            config: {
+                windowClass: 'x-window',
+                width: 720
             }
         })
     }

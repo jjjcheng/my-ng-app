@@ -5,7 +5,7 @@ angular.module('app.plugins')
         var service = {
             form: function(obj) {
                 var scopeName = 'data',
-                    scope, title, resolve, config, postParams, resolveWait, resolveApplyScope, resolveApply = true,
+                    scope, title, resolve, config, postParams, resolveWait, resolveApplyScope, resolveApplyData, resolveApply = true,
                     resolveAfter, deep = true;
 
                 if (typeof obj == 'object') {
@@ -19,6 +19,7 @@ angular.module('app.plugins')
                     resolve = obj.resolve;
                     resolveWait = obj.resolveWait;
                     resolveApplyScope = obj.resolveApplyScope;
+                    resolveApplyData = obj.resolveApplyData;
                     resolveAfter = obj.resolveAfter;
                 }
 
@@ -92,7 +93,22 @@ angular.module('app.plugins')
                                 });
                             }
                         }
-
+                        if (resolveApplyData) {
+                            var _data = {};
+                            [].concat(resolveApplyData).forEach(function(name) {
+                                var o = data[name];
+                                if (o && angular.isObject(o)) {
+                                    // id合并无意义，直接从结果集里面删除
+                                    if (_data.id && o.id) {
+                                        delete _data.id;
+                                        delete o.id;
+                                    }
+                                    angular.extend(_data, o);
+                                    delete data[name];
+                                }
+                            });
+                            angular.extend(data, _data);
+                        }
                         if (Object.keys(data).length > 0) {
                             angular.extend(params, data);
                             $scope[scopeName] = params;
@@ -137,9 +153,10 @@ angular.module('app.plugins')
 
                         }
                         var fail = function() {
-                            alert("2")
+                            dialog.alert("异常");
                         }
                         if (isResolve(resolveWait)) {
+                            console.log(resolveWait)
                             resolveWait.then(done, fail);
                         } else {
                             objs = Object.keys(resolveWait);

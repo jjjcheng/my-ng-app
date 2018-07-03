@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.plugins')
-	.factory('ui.http', ['$q', '$http', '$httpParamSerializer', function($q, $http, $httpParamSerializer) {
+	.factory('ui.http', ['$q', '$http', '$httpParamSerializer','ui.dialog', function($q, $http, $httpParamSerializer,dialog) {
 		return {
 			post: function(name, params, success) {
 				var me = this;
@@ -36,9 +36,9 @@ angular.module('app.plugins')
 			_error: function(response, code, headers, request) {
 				if (response != null) {
 					if (code == 404) {
-						alert('404错误,请重试');
+						dialog.alert('404错误,请重试');
 					} else if (code == 403) {
-						alert('重新登录');
+						dialog.alert('重新登录');
 					} else {
 						var msg = response.errMsg || response.errorMsg || response.error || response.errorMessage || response.errmsg || message;
 						dialog.alert(msg);
