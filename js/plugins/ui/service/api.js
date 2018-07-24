@@ -5,7 +5,9 @@ angular.module('app.plugins')
         var service = {
             form: function(obj) {
                 var scopeName = 'data',
-                    scope, title, resolve, config, postParams, resolveWait, resolveApplyScope, resolveApplyData, resolveApply = true,
+                    scope, title, resolve, config, postParams,
+                    beforeSettings,
+                    resolveWait, resolveApplyScope, resolveApplyData, resolveApply = true,
                     resolveAfter, deep = true;
 
                 if (typeof obj == 'object') {
@@ -16,6 +18,7 @@ angular.module('app.plugins')
                     deep = typeof obj.deep == "undefined" ? deep : obj.deep;
 
                     config = obj.config;
+                    beforeSettings = obj.beforeSettings;
                     resolve = obj.resolve;
                     resolveWait = obj.resolveWait;
                     resolveApplyScope = obj.resolveApplyScope;
@@ -164,6 +167,9 @@ angular.module('app.plugins')
                         }
                     } else {
                         removeLoading();
+                    }
+                    if (beforeSettings && beforeSettings.call($scope, params) === false) {
+                        return;
                     }
                     $scope.submit = function(valid) {
                         $scope.submitted = true;

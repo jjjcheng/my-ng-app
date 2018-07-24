@@ -1,0 +1,53 @@
+<div class="slide-dialog-header">
+	<h2>{{title}}</h2>
+	<div class="slide-dialog-toolbar">
+		<ul>
+			<li><span class="ui-btn slide-dialog-close" ng-click="close(false)"><i class="fa fa-remove"></i></span></li>
+		</ul>
+	</div>
+</div>
+<div class="slide-dialog-body">
+	<div class="x-data-panel-fixed">
+		<form name="form" novalidate="novalidate" ng-submit="submit(form.$valid);">
+			<div class="x-data-panel-body">
+				<div class="x-data-layout">
+					<div class="x-data-aside">
+						<div class="x-tree-panel">
+							<div kendo-tree-view="tree"
+				                 k-options="treeOptions"
+				                 k-on-change="changeNode(dataItem)">
+				                    <span class="k-node" k-template>
+				                         <i class="fa fa-{{dataItem.className || 'folder-open'}}"></i> {{dataItem.text}}
+				                     </span>
+				                 </div>
+						</div>
+					</div>
+					<div class="x-data-main">
+						<div class="data-panel-fixed">
+							<div class="x-toolbar">
+								<div class="fl x-btn-group">
+									<button type="button" class="x-btn" ng-click="add()" ng-disabled="!hasSelectedRecords()"><i class="fa fa-plus-circle"></i><span class="btn-text">添加</span></button>
+									<button type="button" class="x-btn" ng-disabled="!hasSelectedRecords('bufferApi')" ng-click="remove()"><i class="fa fa-times-circle-o"></i><span class="btn-text">移除</span></button>
+								</div>
+								<div class="fr x-query">
+									<input type="text" ng-model="q.keyword" class="x-ipt" placeholder="请输入要检索的内容" /><button type="button" class="fa fa-search x-btn-query" ng-click="query();"></button>
+								</div>
+							</div>
+							<div class="x-dlg-panels">
+								<div class="x-dlg-panel">
+									<div class="x-grid-fixed" grid-view="gridOptions" grid-selection grid-paging></div>
+								</div>
+								<div class="x-dlg-panel">
+									<div class="x-grid-fixed x-grid-no-footer" grid-view="gridBufferOptions" grid-selection></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="x-data-panel-footer">
+				<button class="dialog-button cancel-button" type="button" ng-click="close(false)">取消</button><button class="dialog-button" type="submit">提交</button>
+			</div>
+		</form>
+	</div>
+</div>

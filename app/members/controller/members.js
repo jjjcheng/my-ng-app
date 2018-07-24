@@ -147,16 +147,64 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
                 }
             },
             scope: {
-                select:service.select
+                select: service.select
             },
             resolveApplyScope: ['nodes'],
-            resolveAfter:function(data){
-                var _scope=this;
-                _scope.data=[];
+            resolveAfter: function(data) {
+                var _scope = this;
+                _scope.data = [];
             },
             config: {
                 windowClass: 'x-window',
                 width: 720
+            }
+        })
+    }
+
+    $scope.grant2 = function() {
+        api.form({
+            title: "角色授权",
+            templateUrl: "app/members/views/form_select.tpl.html",
+            beforeSettings: function() {
+                var _scope = this;
+
+            },
+            scope: {
+                gridOptions: {
+                    enableSorting: false, //禁用排序
+                    enableGridMenu: false, //禁用菜单
+                    enableFullRowSelection: true, //禁用单击选择
+                    enableColumnMenus: false, //禁用网格菜单
+                    enableHorizontalScrollbar: 0, //表格的水平滚动条  
+                    enableVerticalScrollbar: 1, //表格的垂直滚动条 (两个都是 1-显示,0-不显
+                    paginationPageSizes: [10],
+                    useExternalPagination: true, //使用分页按钮
+                    selectionRowHeaderWidth: 35,
+                    rowHeight: 35,
+                    columnDefs: [{
+                        "name": "序号",
+                        "width": 50,
+                        "field": "id"
+                    }, {
+                        "name": "企业名称",
+                        "align": "left",
+                        "field": "title",
+                        "width": 500
+                    }, {
+                        "name": "录入时间",
+                        "width": 200,
+                        "field": "date"
+                    }, {
+                        "name": "操作",
+                        // "width": 100,
+                        "field": "id",
+                        "cellTemplate": "<div class=\"x-grid-inner\"><span class=\"btn-text\" ng-click=\"grid.appScope.preview(grid.getCellValue(row, col))\">详情</span></div>"
+                    }]
+                }
+            },
+            config: {
+                windowClass: 'x-window x-window-selection',
+                width: '60%'
             }
         })
     }
