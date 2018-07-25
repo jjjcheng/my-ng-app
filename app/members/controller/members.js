@@ -167,7 +167,6 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
             templateUrl: "app/members/views/form_select.tpl.html",
             beforeSettings: function() {
                 var _scope = this;
-
             },
             scope: {
                 gridOptions: {
