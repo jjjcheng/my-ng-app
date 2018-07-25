@@ -8,6 +8,7 @@ angular.module('app', [
         'ui.grid.selection',
         'ui.grid.pagination',
         'ui.tree',
+        'treeControl',
         
         'app.login',
         'app.layout',

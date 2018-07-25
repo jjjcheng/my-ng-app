@@ -1,76 +1,4 @@
 angular.module('app.notice').controller('noticeController', ['$scope', 'i18nService', 'ui.http', 'ui.api', 'ui.dialog', function($scope, i18nService, http, api, dialog) {
-    $scope.remove = function(scope) {
-        scope.remove();
-    };
-
-    $scope.toggle = function(scope) {
-        scope.toggle();
-    };
-
-    $scope.moveLastToTheBeginning = function() {
-        var a = $scope.data.pop();
-        $scope.data.splice(0, 0, a);
-    };
-
-    $scope.newSubItem = function(scope) {
-        var nodeData = scope.$modelValue;
-        nodeData.nodes.push({
-            id: nodeData.id * 10 + nodeData.nodes.length,
-            title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-            nodes: []
-        });
-    };
-
-    $scope.collapseAll = function() {
-        $scope.$broadcast('angular-ui-tree:collapse-all');
-    };
-
-    $scope.expandAll = function() {
-        $scope.$broadcast('angular-ui-tree:expand-all');
-    };
-
-    $scope.data = [{
-        'id': 1,
-        'title': 'node1',
-        'nodes': [{
-                'id': 11,
-                'title': 'node1.1',
-                'nodes': [{
-                    'id': 111,
-                    'title': 'node1.1.1',
-                    'nodes': []
-                }]
-            },
-            {
-                'id': 12,
-                'title': 'node1.2',
-                'nodes': []
-            }
-        ]
-    }, {
-        'id': 2,
-        'title': 'node2',
-        'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': [{
-                'id': 21,
-                'title': 'node2.1',
-                'nodes': []
-            },
-            {
-                'id': 22,
-                'title': 'node2.2',
-                'nodes': []
-            }
-        ]
-    }, {
-        'id': 3,
-        'title': 'node3',
-        'nodes': [{
-            'id': 31,
-            'title': 'node3.1',
-            'nodes': []
-        }]
-    }];
     // grid
     var loadlData = $scope.loadlData = function() {
         api.loadGrid({
@@ -134,4 +62,44 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
         }
     };
     loadlData();
+
+
+    // tree
+    $scope.treeOptions = {
+        nodeChildren: "children",
+        dirSelectable: true,
+        injectClasses: {
+            ul: "a1",
+            li: "a2",
+            liSelected: "a7",
+            iExpanded: "a3",
+            iCollapsed: "a4",
+            iLeaf: "a5",
+            label: "a6",
+            labelSelected: "a8"
+        }
+    }
+    $scope.dataForTheTree = [{
+            "name": "Joe",
+            "age": "21",
+            "children": [
+                { "name": "Smith", "age": "42", "children": [] },
+                {
+                    "name": "Gary",
+                    "age": "21",
+                    "children": [{
+                        "name": "Jenifer",
+                        "age": "23",
+                        "children": [
+                            { "name": "Dani", "age": "32", "children": [] },
+                            { "name": "Max", "age": "34", "children": [] }
+                        ]
+                    }]
+                }
+            ]
+        },
+        { "name": "Albert", "age": "33", "children": [] },
+        { "name": "Ron", "age": "29", "children": [] }
+    ];
+
 }])
