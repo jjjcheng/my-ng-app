@@ -22,7 +22,7 @@ angular.module('app', [
         $provide.factory('ErrorHttpInterceptor', function($rootScope, $q) {
             return {
                 response: function(response) {
-                    return response.config.headers.uuid == 'terry-app' ? ((response.data && 200 == response.data.code) ? response.data : $q.reject(reason)) : response
+                    return response.config.headers.uuid == 'terry-app' ? ((response.data && 200 == response.data.code) ? response.data : $q.reject(response)) : response
 
                 }
             };

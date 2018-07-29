@@ -102,4 +102,14 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
         { "name": "Ron", "age": "29", "children": [] }
     ];
 
+    http.post({
+        name: "api/tree.php"
+    }).success(function(d) {
+        console.log(d)
+        $scope.dataForTheTree = d;
+    }).error(function(r) {
+        // console.log(r)
+        /* Act on the event */
+    });
+
 }])

@@ -40,6 +40,7 @@ angular.module('app.plugins')
 					} else if (code == 403) {
 						dialog.alert('重新登录');
 					} else {
+						var message='请求错误';
 						var msg = response.errMsg || response.errorMsg || response.error || response.errorMessage || response.errmsg || message;
 						dialog.alert(msg);
 					}
