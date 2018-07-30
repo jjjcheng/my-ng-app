@@ -74,32 +74,53 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
         },
         dirSelectable: true
     }
-
-    http.post({
-        name: "api/tree.php"
-    }).success(function(d) {
-        $scope.dataForTheTree = d;
-    }).error(function(r) {
-        /* Act on the event */
-    });
-
-    $scope.showSelected = function(node) {
-        console.log(node.id);
-        $scope.q['keyword']=node.id;
-        loadlData(q);
+    var loadTreeData = function() {
+        api.loadTree({
+            name: 'api/tree.php',
+            scope: $scope
+        }).then(function(r){
+            $scope.dataForTheTree=r
+        })
     }
+    loadTreeData();
     $scope.loadNodes = function(node) {
-        http.post({
-            name: "api/tree.php",
+        api.loadTree({
+            name: 'api/tree.php',
             params: {
                 id: node.id
-            }
-        }).success(function(d) {
-            // $scope.dataForTheTree = d;
-            node.links=d;
-        }).error(function(r) {
-            /* Act on the event */
-        });
+            },
+            scope: $scope
+        }).then(function(result) {
+            node.links = result;
+        })
+
     }
+    // http.post({
+    //     name: "api/tree.php"
+    // }).success(function(d) {
+    //     $scope.dataForTheTree = d;
+    // }).error(function(r) {
+    //     /* Act on the event */
+    // });
+
+    // $scope.showSelected = function(node) {
+    //     console.log(node.id);
+    //     $scope.q['keyword']=node.id;
+    //     loadlData(q);
+    // }
+    // $scope.loadNodes = function(node) {
+    //     http.post({
+    //         name: "api/tree.php",
+    //         params: {
+    //             id: node.id
+    //         }
+    //     }).success(function(d) {
+    //         // $scope.dataForTheTree = d;
+    //         node.links=d;
+    //     }).error(function(r) {
+    //         /* Act on the event */
+    //     });
+    // }
+
 
 }])

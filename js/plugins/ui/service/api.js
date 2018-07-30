@@ -277,13 +277,24 @@ angular.module('app.plugins')
                     options.paginationCurrentPage = 1;
                 }
             },
-            loadTree: function(name, params, optionsName, $scope) {
-                var name = name || 'api/tree.php';
-                var optionsName = optionsName || 'treeOptions';
-                return http.post({
+            loadTree: function(name, $scope) {
+                var deferred = $q.defer();
+                var cfg, params, optionsName;
+                if (typeof name == 'object') {
+                    cfg = name;
+                    params = cfg.params;
+                    name = cfg.name || 'api/tree.php';
+                    $scope = cfg.scope || this;
+                }
+
+                http.post({
                     name: name,
-                    params: params
-                })
+                    params: params,
+                    success: function(data) {
+                        deferred.resolve(data);
+                    }
+                });
+                return deferred.promise;
             }
         }
         return service
