@@ -9,19 +9,30 @@
     left: 20px;
     right: 20px;
     bottom: 20px;
+    .x-grid-inner {
+        padding: 8px 0px;
+        .btn-text {
+            color: #d75b5d;
+            cursor: pointer;
+            user-select: none
+        }
+    }
+    .btn-label,
+    .btn-text {
+        margin: 0 5px
+    }
     .ui-grid-pinned-container-left {
         .ui-grid-render-container-left {
             .ui-grid-header-cell {
                 border-right: 0;
             }
-            .ui-grid-top-panel{
-                background: linear-gradient(to bottom,#f9f9f9 0,#efefef 100%);
-
+            .ui-grid-top-panel {
+                background: linear-gradient(to bottom, #f9f9f9 0, #efefef 100%);
             }
             .ui-grid-viewport {
                 .ui-grid-canvas {
-                    .ui-grid-row-selected{
-                        div.ui-grid-row-header-cell{
+                    .ui-grid-row-selected {
+                        div.ui-grid-row-header-cell {
                             background-color: @selectBgColor;
                         }
                     }
@@ -30,13 +41,13 @@
                             border-right: 0;
                         }
                     }
-                    .ui-grid-row:nth-child(odd){
-                        .ui-grid-row-header-cell{
+                    .ui-grid-row:nth-child(odd) {
+                        .ui-grid-row-header-cell {
                             background-color: #fff;
                         }
                     }
-                    .ui-grid-row:nth-child(even){
-                        .ui-grid-row-header-cell{
+                    .ui-grid-row:nth-child(even) {
+                        .ui-grid-row-header-cell {
                             background-color: #f9f9f9;
                         }
                     }
@@ -46,14 +57,14 @@
     }
     .ui-grid-render-container-body {
         .ui-grid-header {
-            .ui-grid-top-panel{
-                background: linear-gradient(to bottom,#f9f9f9 0,#efefef 100%);
+            .ui-grid-top-panel {
+                background: linear-gradient(to bottom, #f9f9f9 0, #efefef 100%);
             }
             .ui-grid-header-canvas {
                 width: 100%;
                 .ui-grid-header-cell {
                     border-right: 0;
-                    .ui-grid-cell-contents{
+                    .ui-grid-cell-contents {
                         user-select: text;
                         outline: none;
                         cursor: auto;
@@ -71,7 +82,7 @@
                         background-color: #fff;
                         border-bottom: 1px solid #dbdbdb;
                         user-select: text;
-                        .ui-grid-cell-contents{
+                        .ui-grid-cell-contents {
                             padding: 8px 5px;
                         }
                     }
@@ -97,4 +108,14 @@
             }
         }
     }
+    .ui-grid-pager-row-count-label{
+        //表格脚步分页文字
+        line-height: 36px;
+    }
+}
+
+.grid .btn-text {
+    color: #d75b5d;
+    cursor: pointer;
+    user-select: none
 }

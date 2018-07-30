@@ -159,7 +159,6 @@ angular.module('app.plugins')
                             dialog.alert("异常");
                         }
                         if (isResolve(resolveWait)) {
-                            console.log(resolveWait)
                             resolveWait.then(done, fail);
                         } else {
                             objs = Object.keys(resolveWait);
@@ -270,6 +269,14 @@ angular.module('app.plugins')
                     return r[atrr];
                 });
             },
+            gridReset: function(optionsName, $scope) {
+                var $scope = $scope || this;
+                optionsName = optionsName || 'gridOptions';
+                var options = $scope[optionsName];
+                if (options.paginationCurrentPage != 1) {
+                    options.paginationCurrentPage = 1;
+                }
+            }
         }
         return service
     }])

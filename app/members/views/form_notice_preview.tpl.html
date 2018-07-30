@@ -1,0 +1,42 @@
+<div class="slide-dialog-header">
+	<h2>{{title}}</h2>
+	<div class="slide-dialog-toolbar">
+		<ul>
+			<li><span class="ui-btn slide-dialog-close" ng-click="close(false)"><i class="fa fa-remove"></i></span></li>
+		</ul>
+	</div>
+</div>
+<div class="slide-dialog-body x-slide-dialog-body">
+	<div class="x-data-panel-fixed">
+		<div class="x-data-panel-body">
+			<div class="data-form">
+				<table cellspacing="0" cellpadding="0">
+					<colgroup>
+						<col width="72" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>标题：</td>
+							<td>江苏爱早电竞会所</td>
+						</tr>
+						<tr>
+							<td>发送人：</td>
+							<td>{{data.name}}</td>
+						</tr>
+						<tr>
+							<td>接收人：</td>
+							<td>kelvin</td>
+						</tr>
+						<tr>
+							<td>内容：</td>
+							<td>{{data.treeTypeName}}-这是一段传说中的文本内容,这是一段传说中的文本内容,这是一段传说中的文本内容,这是一段传说中的文本内容</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="x-data-panel-footer">
+			<button class="dialog-button submit-button" type="button" ng-click="close(false)">关闭</button>
+		</div>
+	</div>
+</div>

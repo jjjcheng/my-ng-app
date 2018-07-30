@@ -1,9 +1,10 @@
 angular.module('app.members').controller('membersController', ['$scope', 'i18nService', 'ui.http', 'ui.api', 'ui.dialog', 'membersService', function($scope, i18nService, http, api, dialog, service) {
+    var q = $scope.q = {};
 
-    var loadlData = $scope.loadlData = function() {
+    var loadlData = $scope.loadlData = function(params) {
         api.loadGrid({
             postName: '/api/goldTime.json',
-            params: "",
+            params: params,
             timeout: 300,
             scope: $scope,
             success: function(data) {
@@ -14,9 +15,10 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
             }
         })
     };
-    var query = function(isRest) {
+    var query = $scope.query = function(isRest) {
         if (isRest === false || $scope.gridOptions.paginationCurrentPage == 1) {
-            loadlData()
+            console.log(q)
+            loadlData(q)
         } else {
             api.gridReset(null, $scope);
         }
@@ -43,16 +45,16 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
             "name": "企业名称",
             "align": "left",
             "field": "title",
-            "width": 500
+            "width": 600
         }, {
             "name": "录入时间",
             "width": 200,
             "field": "date"
         }, {
             "name": "操作",
-            // "width": 100,
             "field": "id",
-            "cellTemplate": "<div class=\"x-grid-inner\"><span class=\"btn-text\" ng-click=\"grid.appScope.preview(grid.getCellValue(row, col))\">详情</span></div>"
+            cellTemplate: '<div class="x-grid-inner"><span class="btn-text" ng-click="grid.appScope.preview(grid.getCellValue(row, col))">查看</span></div>'
+
         }],
         onRegisterApi: function(api) {
             $scope.api = api; //注册事件
@@ -63,6 +65,22 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
         }
     };
     loadlData();
+    $scope.preview = function(id) {
+        console.log(id);
+        api.form({
+            title: "用户详情",
+            templateUrl: "app/members/views/form_notice_preview.tpl.html",
+            resolveWait: http.post({
+                name: "api/user.json",
+                params: {
+                    id: id
+                }
+            }),
+            beforeSettings: function() {
+                var _scope = this; //弹出框的scope
+            }
+        })
+    }
 
     $scope.hasSelected = function() {
         return api.hasGridSelected($scope, 'api');
@@ -133,35 +151,6 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
     }
 
     $scope.grant = function() {
-        api.form({
-            title: "角色授权",
-            templateUrl: "app/members/views/form_grant.tpl.html",
-            // resolveWait: http.post({
-            //     name: "api/nodes.json"
-            // }),
-            resolveWait: {
-                nodes: function() {
-                    return http.post({
-                        name: "api/nodes.json"
-                    })
-                }
-            },
-            scope: {
-                select: service.select
-            },
-            resolveApplyScope: ['nodes'],
-            resolveAfter: function(data) {
-                var _scope = this;
-                _scope.data = [];
-            },
-            config: {
-                windowClass: 'x-window',
-                width: 720
-            }
-        })
-    }
-
-    $scope.grant2 = function() {
         api.form({
             title: "角色授权",
             templateUrl: "app/members/views/form_select.tpl.html",
