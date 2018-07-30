@@ -276,6 +276,14 @@ angular.module('app.plugins')
                 if (options.paginationCurrentPage != 1) {
                     options.paginationCurrentPage = 1;
                 }
+            },
+            loadTree: function(name, params, optionsName, $scope) {
+                var name = name || 'api/tree.php';
+                var optionsName = optionsName || 'treeOptions';
+                return http.post({
+                    name: name,
+                    params: params
+                })
             }
         }
         return service

@@ -1,9 +1,10 @@
 angular.module('app.notice').controller('noticeController', ['$scope', 'i18nService', 'ui.http', 'ui.api', 'ui.dialog', function($scope, i18nService, http, api, dialog) {
-    // grid
-    var loadlData = $scope.loadlData = function() {
+    var q = $scope.q = {};
+
+    var loadlData = $scope.loadlData = function(params) {
         api.loadGrid({
             postName: '/api/goldTime.json',
-            params: "",
+            params: params,
             timeout: 300,
             scope: $scope,
             success: function(data) {
@@ -14,9 +15,10 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
             }
         })
     };
-    var query = function(isRest) {
+    var query = $scope.query = function(isRest) {
         if (isRest === false || $scope.gridOptions.paginationCurrentPage == 1) {
-            loadlData()
+            console.log(q)
+            loadlData(q)
         } else {
             api.gridReset(null, $scope);
         }
@@ -70,17 +72,7 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
         isLeaf: function(node) {
             return !node.allowChildren;
         },
-        dirSelectable: true,
-        injectClasses: {
-            ul: "a1",
-            li: "a2",
-            liSelected: "a7",
-            iExpanded: "a3",
-            iCollapsed: "a4",
-            iLeaf: "a5",
-            label: "a6",
-            labelSelected: "a8"
-        }
+        dirSelectable: true
     }
 
     http.post({
@@ -88,12 +80,13 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
     }).success(function(d) {
         $scope.dataForTheTree = d;
     }).error(function(r) {
-        // console.log(r)
         /* Act on the event */
     });
 
     $scope.showSelected = function(node) {
-        // console.log(node)
+        console.log(node.id);
+        $scope.q['keyword']=node.id;
+        loadlData(q);
     }
     $scope.loadNodes = function(node) {
         http.post({
@@ -105,7 +98,6 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
             // $scope.dataForTheTree = d;
             node.links=d;
         }).error(function(r) {
-            // console.log(r)
             /* Act on the event */
         });
     }
