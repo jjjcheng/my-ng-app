@@ -21,7 +21,7 @@ angular.module('app.plugins')
 						"uuid": "terry-app",
 						"Content-Type": "application/x-www-form-urlencoded"
 					},
-					data: params
+					data: $httpParamSerializer(params)
 				}).success(function(r) {
 					me._success(r, success);
 				}).error(function(data, code, headers, request) {

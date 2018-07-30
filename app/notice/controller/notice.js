@@ -66,7 +66,10 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
 
     // tree
     $scope.treeOptions = {
-        nodeChildren: "children",
+        nodeChildren: "links",
+        isLeaf: function(node) {
+            return !node.allowChildren;
+        },
         dirSelectable: true,
         injectClasses: {
             ul: "a1",
@@ -79,37 +82,32 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
             labelSelected: "a8"
         }
     }
-    $scope.dataForTheTree = [{
-            "name": "Joe",
-            "age": "21",
-            "children": [
-                { "name": "Smith", "age": "42", "children": [] },
-                {
-                    "name": "Gary",
-                    "age": "21",
-                    "children": [{
-                        "name": "Jenifer",
-                        "age": "23",
-                        "children": [
-                            { "name": "Dani", "age": "32", "children": [] },
-                            { "name": "Max", "age": "34", "children": [] }
-                        ]
-                    }]
-                }
-            ]
-        },
-        { "name": "Albert", "age": "33", "children": [] },
-        { "name": "Ron", "age": "29", "children": [] }
-    ];
 
     http.post({
         name: "api/tree.php"
     }).success(function(d) {
-        console.log(d)
         $scope.dataForTheTree = d;
     }).error(function(r) {
         // console.log(r)
         /* Act on the event */
     });
+
+    $scope.showSelected = function(node) {
+        // console.log(node)
+    }
+    $scope.loadNodes = function(node) {
+        http.post({
+            name: "api/tree.php",
+            params: {
+                id: node.id
+            }
+        }).success(function(d) {
+            // $scope.dataForTheTree = d;
+            node.links=d;
+        }).error(function(r) {
+            // console.log(r)
+            /* Act on the event */
+        });
+    }
 
 }])
