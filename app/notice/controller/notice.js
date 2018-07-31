@@ -95,6 +95,7 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
         })
 
     }
+    
     // http.post({
     //     name: "api/tree.php"
     // }).success(function(d) {
