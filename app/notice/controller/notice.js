@@ -78,8 +78,8 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
         api.loadTree({
             name: 'api/tree.php',
             scope: $scope
-        }).then(function(r){
-            $scope.dataForTheTree=r
+        }).then(function(r) {
+            $scope.dataForTheTree = r
         })
     }
     loadTreeData();
@@ -95,7 +95,12 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
         })
 
     }
-    
+    $scope.showSelected = function(node) {
+        console.log(node.id);
+        $scope.q['keyword'] = node.id;
+        loadlData(q);
+    }
+
     // http.post({
     //     name: "api/tree.php"
     // }).success(function(d) {
