@@ -196,7 +196,9 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
     //         }
     //     })
     // }
-    $scope.grant=function(){
-        service.select();
+    $scope.grant = function() {
+        service.select().then(function(r) {
+            dialog.alert('目标:' + r.name + '添加成功')
+        })
     }
 }])

@@ -1,4 +1,4 @@
-angular.module('app.members').factory('membersService', ['$q', 'ui.api', function($q, api) {
+angular.module('app.members').factory('membersService', ['$q', 'ui.api', 'ui.dialog', function($q, api, dialog) {
     function getBasicData(fields) {
         var _data = {}
         fields.length && fields.forEach(function(field) {
@@ -69,7 +69,7 @@ angular.module('app.members').factory('membersService', ['$q', 'ui.api', functio
         var showSelected = function(node) {
             var _scope = this;
             _scope.q['keyword'] = node.id;
-            loadData(_scope,_scope.q);
+            loadData(_scope, _scope.q);
         }
         var columnDefs = [{
             "name": "序号",
@@ -87,10 +87,23 @@ angular.module('app.members').factory('membersService', ['$q', 'ui.api', functio
         return api.form({
             title: '角色授权',
             templateUrl: "app/members/views/form_select.tpl.html",
+            name: 'api/user.json',
             beforeSettings: function() {
                 var _scope = this;
                 loadTreeData(_scope);
-                loadData(_scope);
+                // loadData(_scope);
+            },
+            beforeSubmit: function(params) {
+                var scope = this;
+                var data = scope.gridBufferOptions.data;
+                var ids = data.map(function(_r) {
+                    return _r.id;
+                });
+                if (ids.length == 0) {
+                    dialog.alert('请选择至少选择一个角色!');
+                    return false;
+                }
+                params.ids = ids;
             },
             scope: {
                 q: {},
@@ -112,7 +125,69 @@ angular.module('app.members').factory('membersService', ['$q', 'ui.api', functio
                     useExternalPagination: true, //使用分页按钮
                     selectionRowHeaderWidth: 35,
                     rowHeight: 35,
-                    columnDefs: columnDefs
+                    columnDefs: columnDefs,
+                    onRegisterApi: function(api) {
+                        var scope = api.grid.appScope;
+                        scope.api = api;
+                        api.pagination.on.paginationChanged(scope, function(newPage, pageSize) {
+                            scope.query(false)
+                        });
+                    }
+                },
+                gridBufferOptions: {
+                    enableSorting: false, //禁用排序
+                    enableGridMenu: false, //禁用菜单
+                    enableFullRowSelection: true, //禁用单击选择
+                    enableColumnMenus: false, //禁用网格菜单
+                    enableHorizontalScrollbar: 0, //表格的水平滚动条  
+                    enableVerticalScrollbar: 1, //表格的垂直滚动条 (两个都是 1-显示,0-不显
+                    paginationPageSizes: [10],
+                    useExternalPagination: true, //使用分页按钮
+                    selectionRowHeaderWidth: 35,
+                    rowHeight: 35,
+                    columnDefs: columnDefs,
+                    onRegisterApi: function(api) {
+                        var scope = api.grid.appScope;
+                        scope.bufferApi = api;
+                    }
+                },
+                hasSelectedRecords: function(apiName) {
+                    return api.hasGridSelectedRecords(this, apiName)
+                },
+                add: function() {
+                    var scope = this;
+                    var readySelect = api.getGridSelectedRecords(scope);
+                    var _data = scope.gridBufferOptions.data || [];
+                    var data = [];
+                    var ids = _data.map(function(_r) {
+                        return _r.id;
+                    });
+                    readySelect.forEach(function(r) {
+                        var id = r.id;
+                        if (ids.indexOf(id) == -1) {
+                            if (r.$$hashKey) {
+                                delete r.$$hashKey;
+                            }
+                            data.push(r);
+                        }
+                    });
+                    scope.gridBufferOptions.data = [].concat(_data, data);
+                },
+                remove: function() {
+                    var scope = this;
+                    var data = scope.gridBufferOptions.data || [];
+                    var readySelect = api.getGridSelectedRecords(scope, 'bufferApi');
+                    readySelect.forEach(function(r) {
+                        var ids = data.map(function(_r) { //下面的id集合
+                            return _r.id;
+                        })
+                        var id = r.id,
+                            i = ids.indexOf(id);
+                        if (i !== -1) {
+                            data.splice(i, 1);
+                            scope.bufferApi.grid.selection.selectedCount--;
+                        }
+                    })
                 },
                 loadNodes: loadNodes,
                 showSelected: showSelected,

@@ -5,27 +5,30 @@ angular.module('app.plugins')
         var service = {
             form: function(obj) {
                 var scopeName = 'data',
-                    scope, title, resolve, config, postParams,
-                    beforeSettings,
+                    scope, title, resolve, config, postParams, postName,
+                    beforeSettings, beforeSubmit,
                     resolveWait, resolveApplyScope, resolveApplyData, resolveApply = true,
-                    resolveAfter, deep = true;
+                    resolveAfter, deep = true,
+                    deferred;
 
                 if (typeof obj == 'object') {
                     title = obj.title;
                     templateUrl = obj.templateUrl;
                     scope = obj.scope;
                     postParams = obj.data;
+                    postName = obj.name;
                     deep = typeof obj.deep == "undefined" ? deep : obj.deep;
 
                     config = obj.config;
                     beforeSettings = obj.beforeSettings;
+                    beforeSubmit = obj.beforeSubmit;
                     resolve = obj.resolve;
                     resolveWait = obj.resolveWait;
                     resolveApplyScope = obj.resolveApplyScope;
                     resolveApplyData = obj.resolveApplyData;
                     resolveAfter = obj.resolveAfter;
                 }
-
+                deferred = deferred || $q.defer();
                 // if(resolve){
                 //     dialog.mask();
                 // }
@@ -173,17 +176,30 @@ angular.module('app.plugins')
                     $scope.submit = function(valid) {
                         $scope.submitted = true;
 
-                        console.log($scope.data)
                         if (valid) {
-                            // console.log('valid')
+                            if (angular.isFunction(beforeSubmit)) {
+                                if (beforeSubmit.call($scope, params) === false) {
+                                    $scope.submitted = false;
+                                    return;
+                                }
+                            }
                         }
+                        postName && http.post({
+                            name: postName,
+                            params: params,
+                            success: function(data) {
+                                $scope.close();
+                                deferred.resolve(data);
+                            }
+                        });
                     }
                     $scope.interacted = function(field) {
 
                         return $scope.submitted || field.$dirty || field.$touched;
                     };
 
-                }, config, resolve)
+                }, config, resolve);
+                return deferred.promise;
             },
             // gridService
             page: {
