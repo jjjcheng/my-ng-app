@@ -119,6 +119,9 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
                 var _scope = this;
                 var _data = _scope.data;
                 angular.extend(_data, service.getBasicData(_scope.fields));
+            },
+            config:{
+                
             }
         })
     }
