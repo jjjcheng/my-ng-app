@@ -14,6 +14,7 @@ angular.module('app.plugins')
                 if (typeof obj == 'object') {
                     title = obj.title;
                     templateUrl = obj.templateUrl;
+                    scopeName = obj.scopeName || scopeName;
                     scope = obj.scope;
                     postParams = obj.data;
                     postName = obj.name;
@@ -184,6 +185,7 @@ angular.module('app.plugins')
                                 }
                             }
                         }
+                        console.log(params)
                         postName && http.post({
                             name: postName,
                             params: params,
