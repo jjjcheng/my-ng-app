@@ -7,7 +7,6 @@ angular.module('app', [
         'ui.bootstrap',
         'ui.grid.selection',
         'ui.grid.pagination',
-        'ui.tree',
         'treeControl',
         
         'app.login',

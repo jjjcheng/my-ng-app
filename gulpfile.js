@@ -19,6 +19,9 @@ var source = {
         ],
         images:[
             'styles/images/**/*'
+        ],
+        ckeditor:[
+            'node_modules/ckeditor/**/*'
         ]
     },
     css: {
@@ -102,6 +105,8 @@ gulp.task('copy',function(){
         .pipe(gulp.dest('build/fonts'));
         gulp.src(source.resource.images)
         .pipe(gulp.dest('build/images'));
+        gulp.src(source.resource.ckeditor)
+        .pipe(gulp.dest('build/ckeditor'));
 })
 gulp.task('css_min', function() {
     return gulp.src(source.css.app)
