@@ -2,13 +2,13 @@
     <ul>
         <li ng-class="{'hover':$state.current.data.name == 'members'}">
             <a class="span_nav" ui-sref="members" ui-sref-active="activeA">                   
-                <i class="fa fa-paper-plane"></i>
+                <i class="fa fa-user-circle-o"></i>
                 <span class="icon_text">会员管理</span>
             </a>
         </li>
         <li ng-class="{'hover':$state.current.data.name == 'notice'}">
             <a class="span_nav" ui-sref="notice" ui-sref-active="activeA">                    
-                <i class="fa fa-paper-plane"></i>
+                <i class="fa fa-bell"></i>
                 <span class="icon_text">通知公告</span>
             </a>
         </li>
@@ -17,6 +17,12 @@
                 <i class="fa fa-2x fa-tasks"></i>
                 <span class="ico-text">平台服务</span></span>
             </span>
+        </li>
+        <li ng-class="{'hover':$state.current.data.name == 'analysis'}">
+            <a class="span_nav" ui-sref="analysis" ui-sref-active="activeA">                   
+                <i class="fa fa-line-chart"></i>
+                <span class="icon_text">分析统计</span>
+            </a>
         </li>
     </ul>
 </div>
