@@ -120,8 +120,12 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
                 var _data = _scope.data;
                 angular.extend(_data, service.getBasicData(_scope.fields));
             },
-            config:{
-                
+            config: {
+                resolve: {
+                    scripts: ['lazyScript', function(lazyScript) {
+                        return lazyScript.register('build/ckeditor/ckeditor.js');
+                    }]
+                }
             }
         })
     }

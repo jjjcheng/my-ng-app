@@ -14,22 +14,22 @@
                     <dl ng-repeat="field in fields track by field.id" ng-switch on="field.type">
                         <dt><span ng-if="field.required" class="x-star">*</span>{{field.title}}:</dt>
                         <dd ng-switch-when="text ">
-							<input type="text " name="{{field.name}} " class="x-ipt " ng-model="data[field.name] " placeholder="请输入{{field.title}} " ng-required="field.required " />
-							<div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
+                            <input type="text " name="{{field.name}} " class="x-ipt " ng-model="data[field.name] " placeholder="请输入{{field.title}} " ng-required="field.required " />
+                            <div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
                                 <span ng-message="required ">{{field.title}}不能为空</span>
                             </div>
-						</dd>
-						<dd ng-switch-when="radio ">
-							<label class="radio-group " ng-init="data[field.name]=data[field.name]||field.items[0].id " ng-repeat="item in field.items track by item.id ">
+                        </dd>
+                        <dd ng-switch-when="radio ">
+                            <label class="radio-group " ng-init="data[field.name]=data[field.name]||field.items[0].id " ng-repeat="item in field.items track by item.id ">
                                 <input name="{{field.name}} " ng-model="data[field.name] " value="{{item.id}} " class="x-radio " type="radio" />
-                                <span>{{item.value}}</span> 
+                                <span>{{item.value}}</span>
                             </label>
-							<div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
+                            <div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
                                 <span ng-message="required ">{{field.title}}不能为空</span>
                             </div>
                         </dd>
                         <dd ng-switch-when="checkbox ">
-                        	<label class="checkbox-group " ng-repeat="item in field.items track by item.id ">
+                            <label class="checkbox-group " ng-repeat="item in field.items track by item.id ">
                                 <input name="{{field.name}} " ng-model="item.checked " ng-click="checkbox(data, field.name, item.checked, item.id) " ng-checked="data[field.name] && data[field.name].indexOf(item.id.toString())> -1" value="{{item.id}}" class="x-checkbox" ng-required="field.required && (!data[field.name] || data[field.name].length === 0)" type="checkbox" />
                                 <span>{{item.value}}</span>
                             </label>
@@ -51,26 +51,32 @@
                                 <span ng-message="required">{{field.title}}不能为空</span>
                             </div>
                         </dd>
-					</dl>
-					<!-- <dl ng-repeat="field in fields track by field.id " ng-switch="field.type ">
-						<dt><span 123 ng-if="field.required " class="x-star ">*</span>{{field.title}}：</dt>
-						<dd ng-switch-when="text ">
-							<input type="text " name="{{field.name}} " class="x-ipt " ng-model="data[field.name] " placeholder="请输入{{field.title}} " ng-required="field.required " />
-							<div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
+                        <dd ng-switch-when="editor">
+                            <textarea class="x-ipt" rows="8" name="{{field.name}}" height="{{field.height}}" ng-model="data[field.name]" data-ckeditor ng-required="field.required"></textarea>
+                            <div class="x-error" ng-if="interacted(form[field.name])" ng-messages="form[field.name].$error">
+                                <span ng-message="required">{{field.title}}不能为空</span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <!-- <dl ng-repeat="field in fields track by field.id " ng-switch="field.type ">
+                        <dt><span 123 ng-if="field.required " class="x-star ">*</span>{{field.title}}：</dt>
+                        <dd ng-switch-when="text ">
+                            <input type="text " name="{{field.name}} " class="x-ipt " ng-model="data[field.name] " placeholder="请输入{{field.title}} " ng-required="field.required " />
+                            <div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
                                 <span ng-message="required ">{{field.title}}不能为空</span>
                             </div>
-						</dd>
-						<dd ng-switch-when="radio ">
-							<label class="radio-group " ng-init="data[field.name]=data[field.name]||field.items[0].id " ng-repeat="item in field.items track by item.id ">
+                        </dd>
+                        <dd ng-switch-when="radio ">
+                            <label class="radio-group " ng-init="data[field.name]=data[field.name]||field.items[0].id " ng-repeat="item in field.items track by item.id ">
                                 <input name="{{field.name}} " ng-model="data[field.name] " value="{{item.id}} " class="x-radio " type="radio " />
                                 <span>{{item.value}}</span> 
                             </label>
-							<div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
+                            <div class="x-error " ng-if="interacted(form[field.name]) " ng-messages="form[field.name].$error ">
                                 <span ng-message="required ">{{field.title}}不能为空</span>
                             </div>
                         </dd>
                         <dd ng-switch-when="checkbox ">
-                        	<label class="checkbox-group " ng-repeat="item in field.items track by item.id ">
+                            <label class="checkbox-group " ng-repeat="item in field.items track by item.id ">
                                 <input name="{{field.name}} " ng-model="item.checked " ng-click="checkbox(data, field.name, item.checked, item.id) " ng-checked="data[field.name] && data[field.name].indexOf(item.id.toString())> -1" value="{{item.id}}" class="x-checkbox" ng-required="field.required && (!data[field.name] || data[field.name].length === 0)" type="checkbox" />
                                 <span>{{item.value}}</span>
                             </label>
