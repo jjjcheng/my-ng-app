@@ -22,6 +22,9 @@ var source = {
         ],
         ckeditor:[
             'node_modules/ckeditor/**/*'
+        ],
+        highcharts:[
+            'node_modules/highcharts/**/*'
         ]
     },
     css: {
@@ -107,6 +110,8 @@ gulp.task('copy',function(){
         .pipe(gulp.dest('build/images'));
         gulp.src(source.resource.ckeditor)
         .pipe(gulp.dest('build/ckeditor'));
+        gulp.src(source.resource.highcharts)
+        .pipe(gulp.dest('build/highcharts'));
 })
 gulp.task('css_min', function() {
     return gulp.src(source.css.app)

@@ -15,6 +15,11 @@ angular.module('app.analysis', [])
                         controller: 'analysisController'
                     }
                 },
-                parent: 'index'
+                parent: 'index',
+                resolve: {
+                    scripts: ['lazyScript', function(lazyScript) {
+                        return lazyScript.register('build/highcharts/js/highcharts.js');
+                    }]
+                }
             })
     })
