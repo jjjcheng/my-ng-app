@@ -18,7 +18,7 @@ angular.module('app.analysis', [])
                 parent: 'index',
                 resolve: {
                     scripts: ['lazyScript', function(lazyScript) {
-                        return lazyScript.register('build/highcharts/js/highcharts.js');
+                        return lazyScript.register('build/highcharts/highcharts.js');
                     }]
                 }
             })
