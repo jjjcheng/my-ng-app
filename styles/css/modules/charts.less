@@ -7,13 +7,44 @@
         display: table-cell;
         vertical-align: middle;
 
-        >h2 {
-            font-size: 16px;
+        &:first-child {
+            .charts-data-panel {
+                margin-right: 10px;
+                margin-left: 0;
+            }
         }
-
-        .charts-data {
-            height: 360px;
+        .charts-data-panel {
             margin-top: 20px;
+            margin-left: 10px;
+
+            position: relative;
+            >h2 {
+                font-size: 16px;
+                i {
+                    margin-right: 5px;
+                }
+            }
+
+            .charts-data {
+                height: 360px;
+                margin-top: 10px;
+            }
+        }
+    }
+    &+.charts-header {
+        padding-bottom: 10px;
+        font-size: 16px;
+        border-bottom: 1px dashed #cdcdcd;
+        text-align: center;
+        color: #d75b5d;
+        margin-top: 20px;
+
+        .charts-title {
+            .fa {
+                font-size: 1.2em;
+                color: #d75b5d;
+                margin-right: 5px;
+            }
         }
     }
 }
