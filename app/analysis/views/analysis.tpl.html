@@ -1,4 +1,4 @@
-<div class="x-wrap">
+<div class="x-wrap ui-wrap">
     <div class="charts-layout">
         <div class="charts-layout-panel">
             <div class="charts-data-panel">
@@ -36,6 +36,68 @@
             <div class="charts-data-panel">
                 <h2><i class="fa fa-calendar-check-o"></i>按机构员工人数</h2>
                 <div data-view="view5" data-charts="options5" class="charts-data"></div>
+            </div>
+        </div>
+    </div>
+    <div class="charts-header">
+        <div class="charts-title">
+            <i class="fa fa-2x fa-map-marker"></i>
+            <span class="title-text">投资机构注册地实时清单</span>
+        </div>
+    </div>
+    <div class="charts-layout">
+        <div class="charts-layout-panel">
+            <div class="charts-data-panel">
+                <div class="ui-header">
+                    <div class="x-title">
+                        <h3>按省份统计</h3>
+                    </div>
+                </div>
+                <div class="ui-data-grid">
+                    <table cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th width="72">排名</th>
+                                <th>省份</th>
+                                <th width="200">注册机构数量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="m in provinces track by $index">
+                                <td>{{$index+1}}</td>
+                                <td style="text-align:left;">{{m.name}}</td>
+                                <td>{{m.count}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="charts-layout-panel">
+            <div class="charts-data-panel">
+                <div class="ui-header">
+                    <div class="x-title">
+                        <h3>按省份统计</h3>
+                    </div>
+                </div>
+                <div class="ui-data-grid ui-grey">
+                    <table cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th width="72">排名</th>
+                                <th>省份</th>
+                                <th width="200">注册机构数量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="m in areas track by $index">
+                                <td>{{$index+1}}</td>
+                                <td style="text-align:left;">{{m.name}}</td>
+                                <td>{{m.count}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

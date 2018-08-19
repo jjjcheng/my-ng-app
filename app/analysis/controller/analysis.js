@@ -2,7 +2,6 @@
 
 angular.module('app.analysis')
     .controller('analysisController', ['$scope', 'ui.http', function($scope, http) {
-        console.log('analysis');
         $scope.options1 = {
             xAxis: {
                 categories: []
@@ -21,7 +20,6 @@ angular.module('app.analysis')
             },
             success: function(data) {
                 var view = $scope.view1;
-                console.log(view);
                 view.xAxis[0].setCategories(['09-17', '09-18', '09-19', '09-20', '09-21', '09-22', '09-23', '09-24']);
                 view.series[0].setData([43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]);
             }
@@ -173,6 +171,43 @@ angular.module('app.analysis')
                     ['200-300', 6.2],
                     ['大于3000', 0.7]
                 ]);
+            }
+        });
+
+        // 省份统计
+        http.post({
+            name: '/api/goldTime.json',
+            params: {
+
+            },
+            success: function(data) {
+                $scope.provinces = [{
+                    name: '江苏省',
+                    count: 122
+                }, {
+                    name: '浙江省',
+                    count: 12
+                }]
+            }
+        });
+
+        // 北京城区统计
+        http.post({
+            name: '/api/goldTime.json',
+            params: {
+
+            },
+            success: function(data) {
+                $scope.areas = [{
+                    name: '吴中区',
+                    count: 122
+                },{
+                    name:'虎丘区',
+                    count:89
+                },{
+                    name:'相城区',
+                    count:128
+                }]
             }
         });
     }])
