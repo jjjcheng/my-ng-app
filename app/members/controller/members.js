@@ -60,6 +60,8 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
             $scope.api = api; //注册事件
             //分页按钮事件
             api.pagination.on.paginationChanged($scope, function(newPage, pageSize) {
+                q.pageSize = pageSize;
+                q.pageIndex = newPage;
                 query(false)
             });
         }
