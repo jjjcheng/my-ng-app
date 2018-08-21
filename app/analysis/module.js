@@ -6,7 +6,7 @@ angular.module('app.analysis', [])
             .state('analysis', {
                 url: '/analysis',
                 data: {
-                    title: '会员管理',
+                    title: '统计分析',
                     name: 'analysis'
                 },
                 views: {

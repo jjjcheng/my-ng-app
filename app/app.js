@@ -16,6 +16,7 @@ angular.module('app', [
         'app.notice',
         'app.project',
         'app.analysis',
+        'app.misc',
 
         'app.plugins'
     ])
@@ -25,6 +26,16 @@ angular.module('app', [
                 response: function(response) {
                     return response.config.headers.uuid == 'terry-app' ? ((response.data && 200 == response.data.code) ? response.data : $q.reject(response)) : response
 
+                },
+                responseError: function(response) {
+                    if (response.status === 403) {
+                        $rootScope.$emit("error403", "403", response);
+                        return response;
+                    } else if (response.status === 404) {
+                        $rootScope.$emit("error404", "404", response);
+                        return response;
+                    }
+                    return $q.reject(response);
                 }
             };
         })
@@ -32,15 +43,20 @@ angular.module('app', [
     })
     .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User', 'ui.api', 'permissions', function($rootScope, $state, dialog, http, User, api, permissions) {
         $rootScope.global = {};
-        $rootScope.user = ['login'];
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             var permission = toState.name;
             if (toState.name != "login" && !permissions.hasPermission(permission)) {
+                $state.go("403", { }, { "reload": true });
                 event.preventDefault();
-                $state.go("login");
             }
 
 
+        });
+        $rootScope.$on('error403', function(errorType) {
+            $state.go('403');
+        });
+        $rootScope.$on('error404', function(errorType) {
+            $state.go('404');
         });
 
         $rootScope.logout = function() {

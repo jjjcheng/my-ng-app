@@ -10,10 +10,14 @@
     {
         "name": "login"
     },
-    {
-        "name": "analysis"
-    },
+
     {
         "name": "project.stock"
+    },
+    {
+        "name": "404"
+    },
+    {
+        "name": "403"
     }]
 }
