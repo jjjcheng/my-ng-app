@@ -1,0 +1,19 @@
+{
+    "code": 200,
+    "data": [
+    {
+        "name": "members"
+    },
+    {
+        "name": "notice"
+    },
+    {
+        "name": "login"
+    },
+    {
+        "name": "analysis"
+    },
+    {
+        "name": "project.stock"
+    }]
+}

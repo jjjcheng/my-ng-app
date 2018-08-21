@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('app', [
         'ngMessages',
         'ngAnimate',
@@ -8,7 +9,7 @@ angular.module('app', [
         'ui.grid.selection',
         'ui.grid.pagination',
         'treeControl',
-        
+
         'app.login',
         'app.layout',
         'app.members',
@@ -29,8 +30,18 @@ angular.module('app', [
         })
         $httpProvider.interceptors.push('ErrorHttpInterceptor');
     })
-    .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User', 'ui.api', function($rootScope, $state, dialog, http, User, api) {
+    .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User', 'ui.api', 'permissions', function($rootScope, $state, dialog, http, User, api, permissions) {
         $rootScope.global = {};
+        $rootScope.user = ['login'];
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            var permission = toState.name;
+            if (toState.name != "login" && !permissions.hasPermission(permission)) {
+                event.preventDefault();
+                $state.go("login");
+            }
+
+
+        });
 
         $rootScope.logout = function() {
             dialog.confirm("确定要退出吗？").result.then(function(r) {

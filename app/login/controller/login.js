@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('app.login')
-    .controller('LoginCtrl', ['$scope', '$state', 'ui.dialog', 'ui.http', function($scope, $state, dialog, http) {
+    .controller('LoginCtrl', ['$rootScope', '$scope', '$state', 'ui.dialog', 'ui.http', function($rootScope, $scope, $state, dialog, http) {
         var user = $scope.user = {};
 
         $scope.submitted = $scope.formDisabled = false;
@@ -14,6 +14,7 @@ angular.module('app.login')
                     name: 'api/grid.json',
                     params: user
                 }).success(function(data) {
+
                     $state.go('members');
                 }).error(function() {
                     $scope.submitted = $scope.formDisabled = false;
