@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.plugins').directive('routerAnimation', function($rootScope, $timeout) {
+angular.module('app.plugins').directive('routerAnimation', function($rootScope, $timeout, $state) {
     return {
         restrict: 'A',
         compile: function(element, attributes) {
@@ -49,6 +49,9 @@ angular.module('app.plugins').directive('routerAnimation', function($rootScope, 
             });
 
             var destroyForEnd = $rootScope.$on('$viewContentLoaded', function(event) {
+                contentViewAnimEnd();
+            });
+            var stateChangeCancel=$rootScope.$on('$stateChangeCancel', function(current, previous, rejection) {
                 contentViewAnimEnd();
             });
 

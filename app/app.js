@@ -44,14 +44,16 @@ angular.module('app', [
     .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User', 'ui.api', 'permissions', function($rootScope, $state, dialog, http, User, api, permissions) {
         $rootScope.global = {};
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            console.log("x")
+            //权限管理机制
             var permission = toState.name;
             if (toState.name != "login" && !permissions.hasPermission(permission)) {
-                $state.go("403", { }, { "reload": true });
+                $state.go("403");
                 event.preventDefault();
             }
 
-
         });
+
         $rootScope.$on('error403', function(errorType) {
             $state.go('403');
         });
