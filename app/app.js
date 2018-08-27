@@ -9,6 +9,7 @@ angular.module('app', [
         'ui.grid.selection',
         'ui.grid.pagination',
         'treeControl',
+        'ngFileUpload',
 
         'app.login',
         'app.layout',
@@ -44,7 +45,6 @@ angular.module('app', [
     .run(['$rootScope', '$state', 'ui.dialog', 'ui.http', 'User', 'ui.api', 'permissions', function($rootScope, $state, dialog, http, User, api, permissions) {
         $rootScope.global = {};
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            console.log("x")
             //权限管理机制
             var permission = toState.name;
             if (toState.name != "login" && !permissions.hasPermission(permission)) {
@@ -57,9 +57,9 @@ angular.module('app', [
         $rootScope.$on('error403', function(errorType) {
             $state.go('403');
         });
-        $rootScope.$on('error404', function(errorType) {
-            $state.go('404');
-        });
+        // $rootScope.$on('error404', function(errorType) {
+        //     $state.go('404');
+        // });
 
         $rootScope.logout = function() {
             dialog.confirm("确定要退出吗？").result.then(function(r) {

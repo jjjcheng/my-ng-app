@@ -203,6 +203,24 @@ angular.module('app.plugins')
                 }, config, resolve);
                 return deferred.promise;
             },
+            uploadImage: function(obj) {
+                if (typeof obj == 'object') {
+                    console.log(obj);
+                }
+                var _d = dialog.showDialogByUrl('app/misc/views/upload-img.tpl.html', function($scope, resolveDate) {
+                    $scope.title = "asd测试";
+
+                    function removeLoading() {
+                        _d.rendered.then(function() {
+                            angular.element('.x-dialog-loading').remove();
+                        });
+                    }
+                    removeLoading()
+                }, {
+                    windowClass: 'x-window',
+                    width: 480
+                })
+            },
             // gridService
             page: {
                 pageNumber: 1,

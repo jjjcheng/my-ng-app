@@ -10,7 +10,9 @@
     {
         "name": "login"
     },
-
+    {
+        "name": "analysis"
+    },
     {
         "name": "project.stock"
     },

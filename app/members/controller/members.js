@@ -107,7 +107,8 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
                 channelID: "node.id"
             },
             scope: {
-                checkbox: service.checkbox
+                checkbox: service.checkbox,
+                uploadImage:api.uploadImage
             },
             resolveWait: {
                 fields: function() {

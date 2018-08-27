@@ -10,29 +10,32 @@
                         <button type="button" class="x-btn" ng-click="add()">
                             <i class="fa fa-file-o"></i>
                             <span class="btn-text">新建</span>
-                    </button>
-                    <button type="button" class="x-btn" ng-disabled="!hasSelected()" ng-click="edit()">
-                        <i class="fa fa-edit"></i>
-                        <span class="btn-text">编辑</span>
-                    </button>
-                    <button type="button" class="x-btn" ng-disabled="!hasSelectedRecords()" ng-click="removeRows()">
-                        <i class="fa fa-minus-circle"></i>
-                        <span class="btn-text">删除</span>
-                    </button>
-                    </span>
-                    <span class="x-btn-group">
-                        <button class="x-btn" ng-disabled="!hasSelected()" ng-click="reset()">
-                            <i class="fa fa-rotate-left"></i>
-                            <span class="btn-text">密码重置</span>
-                    </button>
-                    <button class="x-btn" ng-click="grant()">
-                        <i class="fa fa-cog"></i>
-                        <span class="btn-text">角色授权</span>
-                    </button>
+                        </button>
+                        <button type="button" class="x-btn" ng-disabled="!hasSelected()" ng-click="edit()">
+                            <i class="fa fa-edit"></i>
+                            <span class="btn-text">编辑</span>
+                        </button>
+                        <button type="button" class="x-btn" ng-disabled="!hasSelectedRecords()" ng-click="removeRows()">
+                            <i class="fa fa-minus-circle"></i>
+                            <span class="btn-text">删除</span>
+                        </button>
+                        </span>
+                        <span class="x-btn-group">
+                            <button class="x-btn" ng-disabled="!hasSelected()" ng-click="reset()">
+                                <i class="fa fa-rotate-left"></i>
+                                <span class="btn-text">密码重置</span>
+                        </button>
+                        <button class="x-btn" ng-click="grant()">
+                            <i class="fa fa-cog"></i>
+                            <span class="btn-text">角色授权</span>
+                        </button>
                     </span>
                 </div>
                 <div class="fr x-query">
-                    <input type="text" ng-model="q.keyword" class="x-ipt" placeholder="请输入要检索的内容" />
+                    <input type="text" name="starttime" class="x-ipt x-ipt-date" placeholder="起始日期" ng-model="q.starttime" datetime type-date="datetime">
+                    <label>&nbsp;-&nbsp;</label>
+                    <input type="text" name="endtime" class="x-ipt x-ipt-date" placeholder="终止日期" ng-model="q.endtime" datetime>
+                    <!-- <input type="text" ng-model="q.keyword" class="x-ipt" placeholder="请输入要检索的内容" /> -->
                     <button type="button" class="fa fa-search x-btn-query" ng-click="query();"></button>
                 </div>
             </div>
