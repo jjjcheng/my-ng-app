@@ -68,15 +68,22 @@
         "type": "imageupload",
         "label": "thumb",
         "required": true
-    }, {
+    }, 
+    {
         "id": 7,
+        "name": "tree",
+        "title": "所属节点",
+        "type": "tree",
+        "required": true
+    },{
+        "id": 8,
         "name": "date",
         "title": "日期控件",
         "dateType": "date",
         "type": "date",
         "required": true
     }, {
-        "id": 8,
+        "id": 9,
         "name": "attach",
         "title": "上传附件",
         "type": "fileupload",

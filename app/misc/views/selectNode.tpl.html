@@ -1,0 +1,27 @@
+<div class="slide-dialog-header">
+    <h2>{{title}}</h2>
+    <div class="slide-dialog-toolbar">
+        <ul>
+            <li><span class="ui-btn slide-dialog-close" ng-click="close(false)"><i class="fa fa-remove"></i></span></li>
+        </ul>
+    </div>
+</div>
+<div class="slide-dialog-body">
+    <div class="data-panel">
+        <form name="form" novalidate="novalidate" ng-submit="submit(form.$valid);">
+            <div class="data-panel-body">
+                <div class="data-form" style="height: 400px;overflow: auto;">
+                    <treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" selected-nodes="selectedNodes" on-selection="showSelected(node,selected)" on-node-toggle="loadNodes(node)">
+                        {{node.text}}
+                    </treecontrol>
+                </div>
+            </div>
+            <div class="data-panel-footer">
+                <div class="data-tools">
+                    <button class="dialog-button cancel-button" type="button" ng-click="close(false)">取消</button>
+                    <button class="dialog-button" type="submit" ng-disabled="formDisabled">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

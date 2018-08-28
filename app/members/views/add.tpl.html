@@ -59,11 +59,19 @@
                         </dd>
                         <dd ng-switch-when="imageupload">
                             <div class="x-ipt-upload">
-                                <input type="text" name="{{field.name}}" class="x-ipt" ng-model="data[field.name]" ng-readOnly="true" ng-required="field.required" /><span class="x-btn" ng-click="uploadImage({'ccc':'xxx'})">选择图片</span></div>
+                                <input type="text" name="{{field.name}}" class="x-ipt" ng-model="data[field.name]" ng-readOnly="true" ng-required="field.required" /><span class="x-btn" ng-click="uploadImage(data,field)">选择图片</span></div>
                             <div class="x-error" ng-if="interacted(form[field.name])" ng-messages="form[field.name].$error">
                                 <span ng-message="required">{{field.title}}不能为空</span>
                             </div>
                             <p><img ng-if="data[field.name]" ng-src="{{data[field.name]}}" alt="" ng-style="{'max-width': 320}" /></p>
+                        </dd>
+                        <dd ng-switch-when="tree">
+                            <div class="x-ipt-upload">
+                                <input type="text" name="{{field.name}}" class="x-ipt" ng-model="data[field.name]" ng-readOnly="true" ng-required="field.required" /><span class="x-btn" ng-click="selectNode(data,field)">选择节点</span>
+                            </div>
+                            <div class="x-error" ng-if="interacted(form[field.name])" ng-messages="form[field.name].$error">
+                                <span ng-message="required">{{field.title}}不能为空</span>
+                            </div>
                         </dd>
                     </dl>
                     <!-- <dl ng-repeat="field in fields track by field.id " ng-switch="field.type ">

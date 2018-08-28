@@ -198,10 +198,73 @@ angular.module('app.members').factory('membersService', ['$q', 'ui.api', 'ui.dia
             }
         })
     }
+
+    function selectNode() {
+        var me = this;
+        var deferred = $q.defer();
+
+        var loadTreeData = function(scope) {
+            api.loadTree({
+                name: 'api/tree.php',
+                scope: scope
+            }).then(function(r) {
+                scope.dataForTheTree = r
+            })
+        }
+        var loadNodes = function(node) {
+            var _scope = this;
+            api.loadTree({
+                name: 'api/tree.php',
+                params: {
+                    id: node.id
+                },
+                scope: _scope
+            }).then(function(result) {
+                node.links = result;
+            })
+
+        }
+
+        var showSelected = function(node,selected) {
+            var _scope = this;
+            _scope.data.nodesList=_scope.selectedNodes.map(function(i){
+                return i.id
+            });
+            console.log(_scope.data)
+        }
+
+        return api.form({
+            title: "选择节点",
+            templateUrl: "app/misc/views/selectNode.tpl.html",
+            beforeSettings: function() {
+                var _scope = this;
+                loadTreeData(_scope);
+            },
+            scope: {
+                q: {},
+                treeOptions: {
+                    nodeChildren: "links",
+                    isLeaf: function(node) {
+                        return !node.allowChildren;
+                    },
+                    dirSelectable: true,
+                    multiSelection: true
+                },
+                loadNodes: loadNodes,
+                showSelected: showSelected
+            },
+            config: {
+                width: 420,
+                windowClass: 'x-window',
+            }
+        })
+    }
+
     var service = {
         getBasicData: getBasicData,
         checkbox: checkbox,
-        select: select
+        select: select,
+        selectNode: selectNode
     };
     return service;
 }])
