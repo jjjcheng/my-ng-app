@@ -44,10 +44,10 @@ angular.module('app.notice').controller('noticeController', ['$scope', 'i18nServ
             "name": "企业名称",
             "align": "left",
             "field": "title",
-            "width": 500
+            "width": 400
         }, {
             "name": "录入时间",
-            "width": 200,
+            "width": 150,
             "field": "date"
         }, {
             "name": "操作",

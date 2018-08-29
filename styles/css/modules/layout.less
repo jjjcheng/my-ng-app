@@ -23,6 +23,23 @@
                 z-index: 1039;
                 width: 90px;
                 background-color: #1e2a36;
+                overflow: auto;
+
+                &::-webkit-scrollbar {
+                    width: 3px;
+                    height: 6px
+                }
+                &::-webkit-scrollbar-track-piece {
+                    background-color: rgba(0, 0, 0, .25)
+                }
+                &::-webkit-scrollbar-thumb,
+                &::-webkit-scrollbar-thumb:horizontal,
+                &::-webkit-scrollbar-thumb:vertical {
+                    background-color: #444
+                }
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #666
+                }
                 li:hover {
                     color: #fff;
                 }
@@ -103,6 +120,7 @@
     left: 90px;
     right: 0;
     height: 38px;
+    z-index: 10;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
 
     .header-toolbar {
@@ -170,6 +188,7 @@
     left: 90px;
     right: 0;
     bottom: 0;
+    overflow: auto;
     .x-wrap {
         position: absolute;
         top: 0;
@@ -177,7 +196,9 @@
         right: 0;
         bottom: 0;
         padding: 20px;
-        overflow: hidden;
+        overflow: hidden; 
+        min-width: 1100px;
+        // min-height: 600px;
         .x-header {
             height: 24px;
             .x-title {
@@ -219,6 +240,7 @@
         left: 0;
         right: 0;
         bottom: 0;
+        min-height: 600px;
 
         .x-side-panel {
             position: absolute;
@@ -241,6 +263,10 @@
 
             .x-loading {
                 background-color: rgba(255, 255, 255, .1)
+            }
+
+            .x-wrap{
+                min-width: 830px;
             }
         }
     }

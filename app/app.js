@@ -57,9 +57,9 @@ angular.module('app', [
         $rootScope.$on('error403', function(errorType) {
             $state.go('403');
         });
-        // $rootScope.$on('error404', function(errorType) {
-        //     $state.go('404');
-        // });
+        $rootScope.$on('error404', function(errorType) {
+            dialog.alert('404错误,请稍后重试')
+        });
 
         $rootScope.logout = function() {
             dialog.confirm("确定要退出吗？").result.then(function(r) {

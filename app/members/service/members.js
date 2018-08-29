@@ -100,7 +100,7 @@ angular.module('app.members').factory('membersService', ['$q', 'ui.api', 'ui.dia
                     return _r.id;
                 });
                 if (ids.length == 0) {
-                    dialog.alert('请选择至少选择一个角色!');
+                    dialog.alert('请至少选择一个角色!');
                     return false;
                 }
                 params.ids = ids;
@@ -225,9 +225,9 @@ angular.module('app.members').factory('membersService', ['$q', 'ui.api', 'ui.dia
 
         }
 
-        var showSelected = function(node,selected) {
+        var showSelected = function(node, selected) {
             var _scope = this;
-            _scope.data.nodesList=_scope.selectedNodes.map(function(i){
+            _scope.data.nodesList = _scope.selectedNodes.map(function(i) {
                 return i.id
             });
             console.log(_scope.data)
@@ -239,6 +239,13 @@ angular.module('app.members').factory('membersService', ['$q', 'ui.api', 'ui.dia
             beforeSettings: function() {
                 var _scope = this;
                 loadTreeData(_scope);
+            },
+            beforeSubmit: function(params) {
+                console.log(params);
+                if (!params.nodesList.length) {
+                    dialog.alert('请至少选择一个节点!');
+                    return false;
+                }
             },
             scope: {
                 q: {},

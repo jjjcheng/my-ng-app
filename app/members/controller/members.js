@@ -45,7 +45,7 @@ angular.module('app.members').controller('membersController', ['$scope', 'i18nSe
             "name": "企业名称",
             "align": "left",
             "field": "title",
-            "width": 600
+            "width": 500
         }, {
             "name": "录入时间",
             "width": 200,
