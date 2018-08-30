@@ -14,7 +14,8 @@
 > > * ui-grid-pagination 开启分页功能
 
 > JS
-> > ` var q = $scope.q = {};
+> > ```html 
+	var q = $scope.q = {};
     var loadlData = $scope.loadlData = function(params) {
         api.loadGrid({
             postName: '/api/goldTime.json',
@@ -77,4 +78,5 @@
             });
         }
     };
-    loadlData(); `
+    loadlData();
+    ```
