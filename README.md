@@ -1,4 +1,7 @@
-#ng-app ui文档
+# ng-app ui文档
 
-* 前方高能
-	>注意:这是是为了提箱前面有很刺激的事情发生
+* Scripts:
+	>npm install -g gulp
+	>npm install gulp
+	>npm install
+	>gulp
